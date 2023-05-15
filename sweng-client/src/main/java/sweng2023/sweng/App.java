@@ -16,7 +16,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
@@ -39,22 +38,53 @@ public class App implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		final Button sendButton = new Button("Send");
-		final TextBox nameField = new TextBox();
-		nameField.setText("GWT User");
+		final Button loginButton = new Button("Login");
+		final Button registerButton = new Button("Registrati");
+		final TextBox usernameField = new TextBox();
+		final TextBox passwordField = new TextBox();
 		final Label errorLabel = new Label();
 
-		// We can add style names to widgets
-		sendButton.addStyleName("sendButton");
+		HTML labelsSpace = new HTML("<br>");
+		HTML buttonsSpace = new HTML("<br>");
+		HTML errorLabelSpace = new HTML("<br>");
 
-		// Add the nameField and sendButton to the RootPanel
-		// Use RootPanel.get() to get the entire body element
-		RootPanel.get("nameFieldContainer").add(nameField);
-		RootPanel.get("sendButtonContainer").add(sendButton);
-		RootPanel.get("errorLabelContainer").add(errorLabel);
+		RootPanel.get("login").add(usernameField);
+		RootPanel.get("login").add(labelsSpace);
+		RootPanel.get("login").add(passwordField);
+		RootPanel.get("login").add(buttonsSpace);
+		RootPanel.get("login").add(loginButton);
+		RootPanel.get("login").add(registerButton);
+		RootPanel.get("login").add(errorLabelSpace);
+		RootPanel.get("login").add(errorLabel);
+
+		registerButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				Cleaner.cleanAll("login");
+				Loader.loadRegister("register");
+			}
+		});
+		
+		loginButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				String username = usernameField.getText();
+				String password = passwordField.getText();
+				greetingService.login(username, password, new AsyncCallback<String>() {
+					public void onFailure(Throwable caught) {
+						// Show the RPC error message to the user
+						errorLabel.setText("error");
+					}
+
+					public void onSuccess(String result) {
+						errorLabel.setText(result);
+					}
+				});
+				/*Cleaner.cleanAll("login");
+				Loader.loadRegister("register");*/
+			}
+		});
 
 		// Focus the cursor on the name field when the app loads
-		nameField.setFocus(true);
+		/*nameField.setFocus(true);
 		nameField.selectAll();
 
 		// Create the popup dialog box
@@ -83,30 +113,25 @@ public class App implements EntryPoint {
 				sendButton.setEnabled(true);
 				sendButton.setFocus(true);
 			}
-		});
+		});*/
 
 		// Create a handler for the sendButton and nameField
-		class MyHandler implements ClickHandler, KeyUpHandler {
-			/**
-			 * Fired when the user clicks on the sendButton.
-			 */
+		/*class MyHandler implements ClickHandler, KeyUpHandler {
+
 			public void onClick(ClickEvent event) {
 				sendNameToServer();
 			}
 
-			/**
-			 * Fired when the user types in the nameField.
-			 */
 			public void onKeyUp(KeyUpEvent event) {
 				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 					sendNameToServer();
 				}
-			}
+			}*/
 
 			/**
 			 * Send the name from the nameField to the server and wait for a response.
 			 */
-			private void sendNameToServer() {
+			/*private void sendNameToServer() {
 				// First, we validate the input.
 				errorLabel.setText("");
 				String textToServer = nameField.getText();
@@ -153,6 +178,6 @@ public class App implements EntryPoint {
 		// Add a handler to send the name to the server
 		MyHandler handler = new MyHandler();
 		sendButton.addClickHandler(handler);
-		nameField.addKeyUpHandler(handler);
+		nameField.addKeyUpHandler(handler);*/
 	}
 }

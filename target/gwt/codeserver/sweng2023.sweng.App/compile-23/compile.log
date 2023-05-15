@@ -1,0 +1,17 @@
+binding: user.agent=safari
+Compiling module sweng2023.sweng.App
+   Tracing compile failure path for type 'sweng2023.sweng.App'
+      [ERROR] Errors in 'file:/C:/Users/Proprietario/Desktop/Sweng2023/sweng/sweng-client/src/main/java/sweng2023/sweng/App.java'
+         [ERROR] Line 19: The import sweng2023.sweng.sweng cannot be resolved
+         [ERROR] Line 19: Syntax error on token "-", . expected
+   Tracing compile failure path for type 'sweng2023.sweng.Cleaner'
+      [ERROR] Errors in 'file:/C:/Users/Proprietario/Desktop/Sweng2023/sweng/sweng-shared/src/main/java/sweng2023/sweng/Cleaner.java'
+         [ERROR] Line 1: The declared package "" does not match the expected package "sweng2023.sweng"
+   Finding entry point classes
+      Tracing compile failure path for type 'sweng2023.sweng.App'
+         [ERROR] Errors in 'file:/C:/Users/Proprietario/Desktop/Sweng2023/sweng/sweng-client/src/main/java/sweng2023/sweng/App.java'
+            [ERROR] Line 19: The import sweng2023.sweng.sweng cannot be resolved
+            [ERROR] Line 19: Syntax error on token "-", . expected
+      [ERROR] Hint: Check that the type name 'sweng2023.sweng.App' is really what you meant
+      [ERROR] Hint: Check that your classpath includes all required source roots
+[ERROR] Compiler returned false

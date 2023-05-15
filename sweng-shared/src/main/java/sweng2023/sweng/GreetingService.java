@@ -1,5 +1,6 @@
 package sweng2023.sweng;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -9,5 +10,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("greet")
 public interface GreetingService extends RemoteService {
 	GreetingResponse greetServer(String name) throws IllegalArgumentException;
-	GreetingResponse testServer(String name);
+	String register(String username, String password);
+	String login(String username, String password);
 }

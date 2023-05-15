@@ -30,8 +30,47 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
-	public GreetingResponse testServer(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public String register(String username, String password) {
+		
+		String message = "";
+		DB db = DBMaker.fileDB("utenti.db").make();
+		HTreeMap utenti = db.hashMap("utenti")
+				  .keySerializer(Serializer.STRING)
+				  .valueSerializer(Serializer.STRING)
+				  .createOrOpen();	
+		
+		if(utenti.get(username) == null) {
+			utenti.put(username, password);
+			message = "Utente registrato con successo";
+		}else {
+			message="Utente già registrato! Vai al login";
+		}
+		
+
+		db.close();
+		
+		return message;
 	}
+
+	@Override
+	public String login(String username, String password) {
+		// TODO Auto-generated method stub
+		String message = "";
+		
+		DB db = DBMaker.fileDB("utenti.db").make();
+		HTreeMap utenti = db.hashMap("utenti").createOrOpen();	
+
+		if(utenti.get(username) != null)
+			if (utenti.get(username).equals(password))
+				message = "ok";
+			else
+				message = "Errato";
+		else
+			message = "errato";
+		
+		db.close();
+		return message;
+	}
+
+
 }
