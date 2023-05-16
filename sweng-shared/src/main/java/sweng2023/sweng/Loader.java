@@ -90,14 +90,20 @@ public class Loader {
 			public void onClick(ClickEvent event) {
 				String username = usernameField.getText();
 				String password = passwordField.getText();
-				greetingService.login(username, password, new AsyncCallback<String>() {
+				greetingService.login(username, password, new AsyncCallback<Boolean>() {
 					public void onFailure(Throwable caught) {
 						// Show the RPC error message to the user
 						errorLabel.setText("error");
 					}
 
-					public void onSuccess(String result) {
-						errorLabel.setText(result);
+					public void onSuccess(Boolean result) {
+						if(!result) {
+							errorLabel.setText("Email o password errate!");
+						}else {
+							Utente utente = new Utente(username, password);
+							Cleaner.cleanAll("login");
+						    Loader.loadMainMenu("main-menu", utente);
+						}
 					}
 				});
 				/*Cleaner.cleanAll("login");
@@ -106,5 +112,31 @@ public class Loader {
 		});
 	}
 	
+	public static void loadMainMenu(String idPanel, Utente utente) {
+		final Button logoutButton = new Button("Logout");
+		final Button yugi = new Button("Yu-gi-oh");
+		final Button pokemon = new Button("Pokemon");
+		final Button magic = new Button("Magic");
+		HTML space1 = new HTML("<br><br>");
+		HTML space2 = new HTML("<br>");
+		HTML space3 = new HTML("<br>");
+		
+		
+		RootPanel.get(idPanel).add(logoutButton);
+		RootPanel.get(idPanel).add(space1);
+		RootPanel.get(idPanel).add(yugi);
+		RootPanel.get(idPanel).add(space2);
+		RootPanel.get(idPanel).add(pokemon);
+		RootPanel.get(idPanel).add(space3);
+		RootPanel.get(idPanel).add(magic);
+		
+		logoutButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				utente.destroy();
+				Cleaner.cleanAll(idPanel);
+				Loader.loadLogin("login");
+			}
+		});
+	}
 	
 }

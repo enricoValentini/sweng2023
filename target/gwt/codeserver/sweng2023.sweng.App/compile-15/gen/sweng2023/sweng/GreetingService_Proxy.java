@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.impl.RpcStatsContext;
 
 public class GreetingService_Proxy extends RemoteServiceProxy implements sweng2023.sweng.GreetingServiceAsync {
   private static final String REMOTE_SERVICE_INTERFACE_NAME = "sweng2023.sweng.GreetingService";
-  private static final String SERIALIZATION_POLICY ="A7D6F31FF5CC2E27A1B565F18FE333DF";
+  private static final String SERIALIZATION_POLICY ="09FCDB7BA4529773D0EEA775E46EC74C";
   private static final sweng2023.sweng.GreetingService_TypeSerializer SERIALIZER = new sweng2023.sweng.GreetingService_TypeSerializer();
   
   public GreetingService_Proxy() {
@@ -35,13 +35,29 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements sweng20
     }
   }
   
-  public void testServer(java.lang.String input, com.google.gwt.user.client.rpc.AsyncCallback callback) {
-    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "testServer");
+  public void login(java.lang.String username, java.lang.String password, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "login");
     try {
-      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 1);
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 2);
       streamWriter.writeString("java.lang.String/2004016611");
-      streamWriter.writeString(input);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString(username);
+      streamWriter.writeString(password);
       helper.finish(callback, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void register(java.lang.String username, java.lang.String password, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "register");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 2);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString(username);
+      streamWriter.writeString(password);
+      helper.finish(callback, ResponseReader.STRING);
     } catch (SerializationException ex) {
       callback.onFailure(ex);
     }

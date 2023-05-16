@@ -1,14 +1,13 @@
 binding: user.agent=safari
 Compiling module sweng2023.sweng.App
-   Unification traversed 627 fields and methods and 316 types. 2 are considered part of the current module and 10 had all of their fields and methods traversed.
-   [WARN] Some stale types ([sweng2023.sweng.App$1MyHandler$1, sweng2023.sweng.App$1, sweng2023.sweng.App$1MyHandler]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
+   Unification traversed 803 fields and methods and 395 types. 15 are considered part of the current module and 23 had all of their fields and methods traversed.
    Compiling 1 permutation
       Compiling permutation 0...
-      Linking per-type JS with 2 new/changed types.
+      Linking per-type JS with 15 new/changed types.
       Source Maps Enabled
    Compile of permutations succeeded
-   Compilation succeeded -- 22,322s
+   Compilation succeeded -- 10,345s
 Linking into C:\Users\Proprietario\Desktop\Sweng2023\sweng\target\gwt\codeserver\sweng2023.sweng.App\compile-2\war\app; Writing extras to C:\Users\Proprietario\Desktop\Sweng2023\sweng\target\gwt\codeserver\sweng2023.sweng.App\compile-2\extras\app
    Link succeeded
-   Linking succeeded -- 1,109s
-26,327s total -- Compile completed
+   Linking succeeded -- 0,534s
+12,528s total -- Compile completed

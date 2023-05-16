@@ -53,23 +53,23 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
-	public String login(String username, String password) {
+	public Boolean login(String username, String password) {
 		// TODO Auto-generated method stub
-		String message = "";
+		Boolean success = false;
 		
 		DB db = DBMaker.fileDB("utenti.db").make();
 		HTreeMap utenti = db.hashMap("utenti").createOrOpen();	
 
 		if(utenti.get(username) != null)
 			if (utenti.get(username).equals(password))
-				message = "ok";
+				success = true;
 			else
-				message = "Errato";
+				success = false;
 		else
-			message = "errato";
+			success = false;
 		
 		db.close();
-		return message;
+		return success;
 	}
 
 

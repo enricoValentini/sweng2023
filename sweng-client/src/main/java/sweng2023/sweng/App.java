@@ -68,18 +68,23 @@ public class App implements EntryPoint {
 			public void onClick(ClickEvent event) {
 				String username = usernameField.getText();
 				String password = passwordField.getText();
-				greetingService.login(username, password, new AsyncCallback<String>() {
+				greetingService.login(username, password, new AsyncCallback<Boolean>() {
 					public void onFailure(Throwable caught) {
 						// Show the RPC error message to the user
 						errorLabel.setText("error");
 					}
 
-					public void onSuccess(String result) {
-						errorLabel.setText(result);
+					public void onSuccess(Boolean result) {
+						if(!result) {
+							errorLabel.setText("Email o password errate!");
+						}else {
+							Utente utente = new Utente(username, password);
+							Cleaner.cleanAll("login");
+							Loader.loadMainMenu("main-menu", utente);
+						}
 					}
 				});
-				/*Cleaner.cleanAll("login");
-				Loader.loadRegister("register");*/
+				
 			}
 		});
 

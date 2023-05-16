@@ -1,7 +1,0 @@
-binding: user.agent=safari
-Compiling module sweng2023.sweng.App
-   Tracing compile failure path for type 'sweng2023.sweng.Cleaner'
-      [ERROR] Errors in 'file:/C:/Users/Proprietario/Desktop/Sweng2023/sweng/sweng-shared/src/main/java/sweng2023/sweng/Cleaner.java'
-         [ERROR] Line 1: The declared package "" does not match the expected package "sweng2023.sweng"
-   [ERROR] Aborting compile due to errors in some input files
-[ERROR] Compiler returned false
