@@ -1,3 +1,13 @@
 binding: user.agent=safari
-skipped compile because no input files have changed
-0,088s total -- Compile completed
+Compiling module sweng2023.sweng.App
+   Computing all possible rebind results for 'sweng2023.sweng.Homepage.HomepageUiBinder'
+      Rebinding sweng2023.sweng.Homepage.HomepageUiBinder
+         Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+            [ERROR] Class Label has no appropriate setStyle() method: <g:Label style='color:red' ui:field='label'> (:8)
+   [ERROR] Errors in 'sweng2023/sweng/Homepage.java'
+      [ERROR] Line 15: Failed to resolve 'sweng2023.sweng.Homepage.HomepageUiBinder' via deferred binding
+   [WARN] For the following type(s), generated source was never committed (did you forget to call commit()?)
+      [WARN] sweng2023.sweng.Homepage_HomepageUiBinderImpl
+   Unification traversed 633 fields and methods and 311 types. 3 are considered part of the current module and 11 had all of their fields and methods traversed.
+   [WARN] Some stale types ([sweng2023.sweng.Homepage_HomepageUiBinderImpl, sweng2023.sweng.Homepage_HomepageUiBinderImpl$Widgets]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
+[ERROR] Compiler returned false

@@ -33,12 +33,15 @@ public class App implements EntryPoint {
 	 */
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
+	
+	private Homepage home = new Homepage(null);
 
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		final Button loginButton = new Button("Login");
+		RootPanel.get().add(home);
+		/*final Button loginButton = new Button("Login");
 		final Button registerButton = new Button("Registrati");
 		final TextBox usernameField = new TextBox();
 		final TextBox passwordField = new TextBox();
@@ -86,7 +89,7 @@ public class App implements EntryPoint {
 				});
 				
 			}
-		});
+		});*/
 
 		// Focus the cursor on the name field when the app loads
 		/*nameField.setFocus(true);
