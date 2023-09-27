@@ -9,13 +9,14 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
+//import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Composite;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
@@ -24,6 +25,7 @@ public class App implements EntryPoint {
 	 * The message displayed to the user when the server cannot be reached or
 	 * returns an error.
 	 */
+	
 	private static final String SERVER_ERROR = "An error occurred while "
 			+ "attempting to contact the server. Please check your network "
 			+ "connection and try again.";
@@ -34,7 +36,7 @@ public class App implements EntryPoint {
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
 	
-	private Homepage home = new Homepage(null);
+	private Composite home = new Homepage(null);
 
 	/**
 	 * This is the entry point method.
@@ -46,6 +48,7 @@ public class App implements EntryPoint {
 		final TextBox usernameField = new TextBox();
 		final TextBox passwordField = new TextBox();
 		final Label errorLabel = new Label();
+		Root
 
 		HTML labelsSpace = new HTML("<br>");
 		HTML buttonsSpace = new HTML("<br>");

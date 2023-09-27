@@ -3,25 +3,25 @@
   <context-param>
     <param-name>org.eclipse.jetty.containerInitializers</param-name>
     <param-value><![CDATA[
-    "ContainerInitializer{org.eclipse.jetty.websocket.server.NativeWebSocketServletContainerInitializer,interested=[],applicable=[],annotated=[]}",
     "ContainerInitializer{org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer,interested=[javax.websocket.server.ServerApplicationConfig, javax.websocket.server.ServerEndpoint, javax.websocket.Endpoint],applicable=[],annotated=[]}",
-    "ContainerInitializer{org.eclipse.jetty.apache.jsp.JettyJasperInitializer,interested=[],applicable=[],annotated=[]}"]]></param-value>
+    "ContainerInitializer{org.eclipse.jetty.apache.jsp.JettyJasperInitializer,interested=[],applicable=[],annotated=[]}",
+    "ContainerInitializer{org.eclipse.jetty.websocket.server.NativeWebSocketServletContainerInitializer,interested=[],applicable=[],annotated=[]}"]]></param-value>
   </context-param>
   <context-param>
     <param-name>org.eclipse.jetty.tlds</param-name>
     <param-value><![CDATA[
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/sql-1_0-rt.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/c-1_1.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/fmt.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/c-1_0-rt.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/x-1_0-rt.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/fmt-1_0-rt.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/permittedTaglibs.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/scriptfree.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/sql.tld",
     "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/c.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/scriptfree.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/fmt.tld",
     "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/fn.tld",
-    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/x.tld"]]></param-value>
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/x.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/sql-1_0-rt.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/fmt-1_0-rt.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/c-1_1.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/x-1_0-rt.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/sql.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/c-1_0-rt.tld",
+    "jar:${user.home.uri}/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar!/META-INF/permittedTaglibs.tld"]]></param-value>
   </context-param>
   <context-param>
     <param-name>org.eclipse.jetty.resources</param-name>
@@ -313,7 +313,7 @@
       <secure>false</secure>
       <max-age>-1</max-age>
     </cookie-config>
-    <tracking-mode>COOKIE</tracking-mode>
     <tracking-mode>URL</tracking-mode>
+    <tracking-mode>COOKIE</tracking-mode>
   </session-config>
 </web-app>

@@ -5,7 +5,19 @@
 
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label ui:field="label">Homepage</g:Label>
-		<g:Button ui:field="loginBtn">Login</g:Button>
+		<div style="display: block">
+			<g:Button ui:field="loginBtn">Login</g:Button>
+			<g:Button ui:field="logoutBtn">Logout</g:Button>
+			<g:Button ui:field="profileBtn">Profilo</g:Button>
+		</div>
+		
+		<br/>
+		<div style="text-align:center">
+			<g:Button ui:field="yugiohBtn">Yu-Gi-oh</g:Button>
+			<br/>
+			<g:Button ui:field="magicBtn">Magic the Gathering</g:Button>
+			<br/>
+			<g:Button ui:field="pokemonBtn">Pokemon</g:Button>
+		</div>
 	</g:HTMLPanel>
 </ui:UiBinder> 

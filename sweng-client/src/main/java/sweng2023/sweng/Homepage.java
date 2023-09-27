@@ -7,7 +7,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class Homepage extends Composite {
@@ -20,17 +20,46 @@ public class Homepage extends Composite {
 	@UiField
 	Button loginBtn;
 	@UiField
-	Label label;
+	Button logoutBtn;
+	@UiField
+	Button profileBtn;
+	@UiField
+	Button yugiohBtn;
+	@UiField
+	Button magicBtn;
+	@UiField
+	Button pokemonBtn;
 	
+	Utente user;
+	
+	@Override
+	public void onLoad() {
+		if(this.user != null) {
+			this.loginBtn.setVisible(false);
+		}else {
+			this.logoutBtn.setVisible(false);
+			this.profileBtn.setVisible(false);
+		}
+	}
 	
 	@UiHandler("loginBtn")
-	void onClick(ClickEvent e) {
-		this.label.setText("Cliccato!");
+	void loadLogin(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite login = new Login();
+		RootPanel.get().add(login);
+	}
+	
+	@UiHandler("logoutBtn")
+	void doLogout(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite homepage = new Homepage(null);
+		RootPanel.get().add(homepage);
 	}
 
 	public Homepage(Utente u) {
-		//this.label.setStyleName("color:red");
 		initWidget(uiBinder.createAndBindUi(this));
+		this.user = u;
+
 	}
 
 }
