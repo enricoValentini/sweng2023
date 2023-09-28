@@ -6,8 +6,8 @@ Compiling module sweng2023.sweng.App
       Linking per-type JS with 2 new/changed types.
       Source Maps Enabled
    Compile of permutations succeeded
-   Compilation succeeded -- 5,942s
+   Compilation succeeded -- 4,033s
 Linking into C:\Users\Admin\Desktop\progetto_sweng\sweng2023\target\gwt\codeserver\sweng2023.sweng.App\compile-3\war\app; Writing extras to C:\Users\Admin\Desktop\progetto_sweng\sweng2023\target\gwt\codeserver\sweng2023.sweng.App\compile-3\extras\app
    Link succeeded
-   Linking succeeded -- 0,349s
-6,794s total -- Compile completed
+   Linking succeeded -- 0,291s
+4,541s total -- Compile completed

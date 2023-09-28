@@ -13,6 +13,10 @@
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/app/greet</url-pattern>
   </servlet-mapping>
+  
+  <listener>
+    <listener-class>sweng2023.sweng.ListenerImpl</listener-class>
+  </listener>
 
 	<!-- Default page to serve -->
   <welcome-file-list>
