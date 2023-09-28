@@ -1,4 +1,4 @@
-# Progetto sweng2023
+# Progetto sweng2023 (updated)
 Per eseguire il progetto è necessario usare i seguenti comandi
 
 ## Per avviare il client:
