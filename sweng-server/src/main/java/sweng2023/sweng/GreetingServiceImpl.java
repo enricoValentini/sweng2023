@@ -1,6 +1,9 @@
 package sweng2023.sweng;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
+import java.util.ArrayList;
+
 import org.mapdb.*;
 
 /**
@@ -31,24 +34,24 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 
 	@Override
 	public String register(String username, String password) {
-		
+
 		String message = "";
 		DB db = DBMaker.fileDB("utenti.db").make();
 		HTreeMap utenti = db.hashMap("utenti")
-				  .keySerializer(Serializer.STRING)
-				  .valueSerializer(Serializer.STRING)
-				  .createOrOpen();	
-		
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.STRING)
+				.createOrOpen();
+
 		if(utenti.get(username) == null) {
 			utenti.put(username, password);
 			message = "Utente registrato con successo";
 		}else {
 			message="Utente già registrato! Vai al login";
 		}
-		
+
 
 		db.close();
-		
+
 		return message;
 	}
 
@@ -56,9 +59,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	public Boolean login(String username, String password) {
 		// TODO Auto-generated method stub
 		Boolean success = false;
-		
+
 		DB db = DBMaker.fileDB("utenti.db").make();
-		HTreeMap utenti = db.hashMap("utenti").createOrOpen();	
+		HTreeMap utenti = db.hashMap("utenti").createOrOpen();
 
 		if(utenti.get(username) != null)
 			if (utenti.get(username).equals(password))
@@ -67,10 +70,26 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 				success = false;
 		else
 			success = false;
-		
+
 		db.close();
 		return success;
 	}
 
+	@Override
+	public ArrayList<Carta> getCarte(String filename, String mapName) {
+		DB db = DBMaker.fileDB(filename).make();
+		HTreeMap<Integer, Carta> carteMap = db.hashMap(mapName)
+				.keySerializer(Serializer.INTEGER)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+
+		System.out.println("Debug DB "  + carteMap.size());
+
+		ArrayList<Carta> carte = new ArrayList<>();
+		carte.addAll(carteMap.values());
+
+		db.close();
+		return carte;
+	}
 
 }

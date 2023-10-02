@@ -1,7 +1,5 @@
 package sweng2023.sweng;
 
-//enri  e carino
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -27,7 +25,7 @@ public class App implements EntryPoint {
 	 * The message displayed to the user when the server cannot be reached or
 	 * returns an error.
 	 */
-	
+
 	private static final String SERVER_ERROR = "An error occurred while "
 			+ "attempting to contact the server. Please check your network "
 			+ "connection and try again.";
@@ -37,7 +35,7 @@ public class App implements EntryPoint {
 	 */
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
-	
+
 	private Composite home = new Homepage(null);
 
 	/**
