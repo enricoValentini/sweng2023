@@ -12,4 +12,45 @@ public class CartaMagic extends Carta implements Serializable{
     private boolean isFullArt;
     private boolean isPromo;
     private boolean isReprint;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public String getTypes() {
+        return types;
+    }
+
+    public String getRarity() {
+        return rarity;
+    }
+
+    public String hasFoil() {
+        return hasFoil ? "Sì" : "No";
+    }
+
+    public String isAlternative() {
+        return isAlternative ? "Sì" : "No";
+    }
+
+    public String isFullArt() {
+        return isFullArt ? "Sì" : "No";
+    }
+
+    public String isPromo() {
+        return isPromo ? "Sì" : "No";
+    }
+
+    public String isReprint() {
+        return isReprint ? "Sì" : "No";
+    }
+
 }

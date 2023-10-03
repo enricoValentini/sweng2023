@@ -1,10 +1,13 @@
 package sweng2023.sweng;
 
+import java.util.ArrayList;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -14,9 +17,14 @@ public class Homepage extends Composite {
 
 	private static HomepageUiBinder uiBinder = GWT.create(HomepageUiBinder.class);
 
+
+
 	interface HomepageUiBinder extends UiBinder<Widget, Homepage> {
+
+
 	}
-	
+
+
 	@UiField
 	Button loginBtn;
 	@UiField
@@ -28,7 +36,7 @@ public class Homepage extends Composite {
 	@UiField
 	Button magicBtn;
 	@UiField
-	Button pokemonBtn;
+	Button PokemonBtn;
 	
 	Utente user;
 	
@@ -40,6 +48,7 @@ public class Homepage extends Composite {
 			this.logoutBtn.setVisible(false);
 			this.profileBtn.setVisible(false);
 		}
+
 	}
 	
 	@UiHandler("loginBtn")
@@ -55,6 +64,30 @@ public class Homepage extends Composite {
 		Composite homepage = new Homepage(null);
 		RootPanel.get().add(homepage);
 	}
+
+	@UiHandler("yugiohBtn")
+	void yugioh(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite yugioh = new YugiohPage();
+		RootPanel.get().add(yugioh);
+	}
+
+	@UiHandler("PokemonBtn")
+	void pokemon(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite pokemon = new PokemonPage();
+		RootPanel.get().add(pokemon);
+	}
+
+	@UiHandler("magicBtn")
+	void magic(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite magic = new MagicPage();
+		RootPanel.get().add(magic);
+	}
+
+
+
 
 	public Homepage(Utente u) {
 		initWidget(uiBinder.createAndBindUi(this));
