@@ -1,8 +1,11 @@
 package sweng2023.sweng;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
@@ -25,11 +28,13 @@ public class YugiohPage extends Composite  {
 
     @UiField
     FlexTable cardTable;
+    
+    Utente utente;
 
 
-    public YugiohPage() {
+    public YugiohPage(Utente utente) {
         initWidget(UiBinder.createAndBindUi(this));
-
+        this.utente = utente;
 
     }
 
@@ -47,10 +52,16 @@ public class YugiohPage extends Composite  {
                     @Override
                     public void onSuccess(ArrayList<Carta> result) {
                         carte.addAll(result);
-                        homeBtn.setText(""+result.size());
                         updateTable(carte);
                     }
                 });
+    }
+    
+    @UiHandler("homeBtn")
+    void backHome(ClickEvent e) {
+    	RootPanel.get().clear();
+		Composite homepage = new Homepage(this.utente);
+		RootPanel.get().add(homepage);
     }
 
     private void updateTable(ArrayList<Carta> carte) {
@@ -104,9 +115,40 @@ public class YugiohPage extends Composite  {
         detailsPopup.setWidget(contentPanel);
 
         Button closeButton = new Button("Chiudi");
+        Button addPossedutaBtn = new Button("Aggiungi posseduta");
+        Button addDesiderataBtn = new Button("Aggiungi desiderata");
         closeButton.addClickHandler(event -> detailsPopup.hide());
-
+        
         contentPanel.add(closeButton);
+        
+        addPossedutaBtn.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				//Carica la pagina di aggiunta della carta
+				RootPanel.get().clear();
+				Composite dettagli = new DettagliPage(utente, carta, 1, 0);
+				RootPanel.get().add(dettagli);
+			}
+        	
+        });
+        
+        addDesiderataBtn.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				//Carica la pagina di aggiunta della carta
+				RootPanel.get().clear();
+				Composite dettagli = new DettagliPage(utente, carta, 1 , 1);
+				RootPanel.get().add(dettagli);
+			}
+        	
+        });
+        
+        if(this.utente != null) {
+        	contentPanel.add(addPossedutaBtn);
+        	contentPanel.add(addDesiderataBtn);
+        }
 
         int left = clickX - detailsPopup.getOffsetWidth() / 2;
         int top = clickY - detailsPopup.getOffsetHeight() / 2 + Window.getScrollTop();

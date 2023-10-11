@@ -3,6 +3,10 @@ package sweng2023.sweng;
 import java.io.Serializable;
 
 public class Utente implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String email;
 	private String password;
 	

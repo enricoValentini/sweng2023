@@ -3,8 +3,8 @@
   <context-param>
     <param-name>org.eclipse.jetty.containerInitializers</param-name>
     <param-value><![CDATA[
-    "ContainerInitializer{org.eclipse.jetty.websocket.server.NativeWebSocketServletContainerInitializer,interested=[],applicable=[],annotated=[]}",
     "ContainerInitializer{org.eclipse.jetty.apache.jsp.JettyJasperInitializer,interested=[],applicable=[],annotated=[]}",
+    "ContainerInitializer{org.eclipse.jetty.websocket.server.NativeWebSocketServletContainerInitializer,interested=[],applicable=[],annotated=[]}",
     "ContainerInitializer{org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer,interested=[javax.websocket.server.ServerApplicationConfig, javax.websocket.server.ServerEndpoint, javax.websocket.Endpoint],applicable=[],annotated=[]}"]]></param-value>
   </context-param>
   <context-param>
@@ -316,7 +316,7 @@
       <secure>false</secure>
       <max-age>-1</max-age>
     </cookie-config>
-    <tracking-mode>URL</tracking-mode>
     <tracking-mode>COOKIE</tracking-mode>
+    <tracking-mode>URL</tracking-mode>
   </session-config>
 </web-app>

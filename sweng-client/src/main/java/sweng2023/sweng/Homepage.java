@@ -68,21 +68,21 @@ public class Homepage extends Composite {
 	@UiHandler("yugiohBtn")
 	void yugioh(ClickEvent e) {
 		RootPanel.get().clear();
-		Composite yugioh = new YugiohPage();
+		Composite yugioh = new YugiohPage(this.user);
 		RootPanel.get().add(yugioh);
 	}
 
 	@UiHandler("PokemonBtn")
 	void pokemon(ClickEvent e) {
 		RootPanel.get().clear();
-		Composite pokemon = new PokemonPage();
+		Composite pokemon = new PokemonPage(this.user);
 		RootPanel.get().add(pokemon);
 	}
 
 	@UiHandler("magicBtn")
 	void magic(ClickEvent e) {
 		RootPanel.get().clear();
-		Composite magic = new MagicPage();
+		Composite magic = new MagicPage(this.user);
 		RootPanel.get().add(magic);
 	}
 
