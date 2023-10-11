@@ -3,6 +3,7 @@ package sweng2023.sweng;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mapdb.*;
 
@@ -90,6 +91,53 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 
 		db.close();
 		return carte;
+	}
+
+	@Override
+	public Boolean addPossedutaDesiderata(String email,Miacarta carta, int tipo) {
+		/*DB db = DBMaker.fileDB("possedute.db").make();
+		HTreeMap<String, List<Miacarta>> possedute = db.hashMap("possedute")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+
+		if (possedute.get(email) == null) {
+			List<Miacarta> owned = new ArrayList<Miacarta>();
+			owned.add(carta);
+			possedute.put(email, owned);
+		}else {
+			possedute.get(email).add(carta);
+		}
+			
+
+		db.close();
+		return true;*/
+		String dbName;
+		DB db;
+		
+		if (tipo == 0) {
+			db = DBMaker.fileDB("possedute.db").make();
+			dbName = "possedute";
+		}else {
+			db = DBMaker.fileDB("desiderate.db").make();
+			dbName = "desiderate";
+		}
+		
+		HTreeMap<String, List<Miacarta>> carte = db.hashMap(dbName)
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		if (carte.get(email) == null) {
+			List<Miacarta> owned = new ArrayList<Miacarta>();
+			owned.add(carta);
+			carte.put(email, owned);
+		}else {
+			carte.get(email).add(carta);
+		}
+		
+		db.close();
+		return true;
 	}
 
 }

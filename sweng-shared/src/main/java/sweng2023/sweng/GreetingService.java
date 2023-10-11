@@ -15,7 +15,7 @@ public interface GreetingService extends RemoteService {
 	String register(String username, String password);
 	Boolean login(String username, String password);
 	ArrayList<Carta> getCarte(String filename, String mapName);
-
+	Boolean addPossedutaDesiderata(String email, Miacarta carta, int tipo);
 
 
 }

@@ -1,3 +1,4 @@
 # Module app
 # RPC service class, partial path of RPC policy file
+sweng2023.sweng.GreetingService, 35CD2282980DE65545D75A3CE6CC79F2.gwt.rpc
 sweng2023.sweng.GreetingService, 09FCDB7BA4529773D0EEA775E46EC74C.gwt.rpc

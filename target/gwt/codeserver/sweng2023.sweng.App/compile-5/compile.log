@@ -1,3 +1,7 @@
 binding: user.agent=safari
-skipped compile because no input files have changed
-0,078s total -- Compile completed
+Compiling module sweng2023.sweng.App
+   Tracing compile failure path for type 'sweng2023.sweng.Homepage'
+      [ERROR] Errors in 'file:/C:/Users/Admin/Desktop/progetto_sweng/sweng2023/sweng-client/src/main/java/sweng2023/sweng/Homepage.java'
+         [ERROR] Line 71: The constructor YugiohPage() is undefined
+   [ERROR] Aborting compile due to errors in some input files
+[ERROR] Compiler returned false

@@ -1,0 +1,6 @@
+binding: user.agent=safari
+Compiling module sweng2023.sweng.App
+   Finding entry point classes
+      [ERROR] Hint: Check that the type name 'sweng2023.sweng.App' is really what you meant
+      [ERROR] Hint: Check that your classpath includes all required source roots
+[ERROR] Compiler returned false
