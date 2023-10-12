@@ -8,3 +8,5 @@ mvn -U -e gwt:codeserver -pl sweng-client -am
 mvn -U jetty:run-forked -pl sweng-server -am -Denv=dev
 
 Aprire il browser e digitare localhost:8080
+
+Per ulteriori dettagli fare riferimento alla documentazione allegata
