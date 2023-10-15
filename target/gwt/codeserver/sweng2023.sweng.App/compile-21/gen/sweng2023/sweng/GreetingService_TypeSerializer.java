@@ -135,6 +135,12 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
         @sweng2023.sweng.GreetingResponse_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/GreetingResponse;),
       ];
     
+    result["sweng2023.sweng.Miacarta/948162164"] = [
+        @sweng2023.sweng.Miacarta_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
+        @sweng2023.sweng.Miacarta_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/Miacarta;),
+        @sweng2023.sweng.Miacarta_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lsweng2023/sweng/Miacarta;)
+      ];
+    
     result["sweng2023.sweng.Varianti/497575824"] = [
         @sweng2023.sweng.Varianti_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @sweng2023.sweng.Varianti_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/Varianti;),
@@ -168,6 +174,7 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.CartaPokemon::class)] = "sweng2023.sweng.CartaPokemon/42958815";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.CartaYugioh::class)] = "sweng2023.sweng.CartaYugioh/3806726101";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.GreetingResponse::class)] = "sweng2023.sweng.GreetingResponse/6452363";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.Miacarta::class)] = "sweng2023.sweng.Miacarta/948162164";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.Varianti::class)] = "sweng2023.sweng.Varianti/497575824";
     return result;
   }-*/;

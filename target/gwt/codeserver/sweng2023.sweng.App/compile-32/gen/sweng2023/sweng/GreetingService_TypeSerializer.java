@@ -61,61 +61,73 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
     result["[Ljava.lang.String;/2600011424"] = [
         @com.google.gwt.user.client.rpc.core.java.lang.String_Array_Rank_1_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.lang.String_Array_Rank_1_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;[Ljava/lang/String;),
+        @com.google.gwt.user.client.rpc.core.java.lang.String_Array_Rank_1_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;[Ljava/lang/String;)
       ];
     
     result["java.util.ArrayList/4159755760"] = [
         @com.google.gwt.user.client.rpc.core.java.util.ArrayList_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.util.ArrayList_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/ArrayList;),
+        @com.google.gwt.user.client.rpc.core.java.util.ArrayList_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/ArrayList;)
       ];
     
     result["java.util.Arrays$ArrayList/2507071751"] = [
         @com.google.gwt.user.client.rpc.core.java.util.Arrays.ArrayList_CustomFieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.util.Arrays.ArrayList_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/List;),
+        @com.google.gwt.user.client.rpc.core.java.util.Arrays.ArrayList_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/List;)
       ];
     
     result["java.util.Collections$EmptyList/4157118744"] = [
         @com.google.gwt.user.client.rpc.core.java.util.Collections.EmptyList_CustomFieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.util.Collections.EmptyList_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/List;),
+        @com.google.gwt.user.client.rpc.core.java.util.Collections.EmptyList_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/List;)
       ];
     
     result["java.util.Collections$SingletonList/1586180994"] = [
         @com.google.gwt.user.client.rpc.core.java.util.Collections.SingletonList_CustomFieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.util.Collections.SingletonList_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/List;),
+        @com.google.gwt.user.client.rpc.core.java.util.Collections.SingletonList_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/List;)
       ];
     
     result["java.util.LinkedList/3953877921"] = [
         @com.google.gwt.user.client.rpc.core.java.util.LinkedList_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.util.LinkedList_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/LinkedList;),
+        @com.google.gwt.user.client.rpc.core.java.util.LinkedList_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/LinkedList;)
       ];
     
     result["java.util.Stack/1346942793"] = [
         @com.google.gwt.user.client.rpc.core.java.util.Stack_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.util.Stack_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/Stack;),
+        @com.google.gwt.user.client.rpc.core.java.util.Stack_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/Stack;)
       ];
     
     result["java.util.Vector/3057315478"] = [
         @com.google.gwt.user.client.rpc.core.java.util.Vector_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.util.Vector_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/Vector;),
+        @com.google.gwt.user.client.rpc.core.java.util.Vector_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/Vector;)
       ];
     
     result["sweng2023.sweng.Carta/2695169999"] = [
         @sweng2023.sweng.Carta_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @sweng2023.sweng.Carta_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/Carta;),
+        @sweng2023.sweng.Carta_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lsweng2023/sweng/Carta;)
       ];
     
     result["sweng2023.sweng.CartaMagic/3459027290"] = [
         @sweng2023.sweng.CartaMagic_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @sweng2023.sweng.CartaMagic_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/CartaMagic;),
+        @sweng2023.sweng.CartaMagic_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lsweng2023/sweng/CartaMagic;)
       ];
     
     result["sweng2023.sweng.CartaPokemon/42958815"] = [
         @sweng2023.sweng.CartaPokemon_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @sweng2023.sweng.CartaPokemon_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/CartaPokemon;),
+        @sweng2023.sweng.CartaPokemon_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lsweng2023/sweng/CartaPokemon;)
       ];
     
     result["sweng2023.sweng.CartaYugioh/3806726101"] = [
         @sweng2023.sweng.CartaYugioh_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @sweng2023.sweng.CartaYugioh_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/CartaYugioh;),
+        @sweng2023.sweng.CartaYugioh_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lsweng2023/sweng/CartaYugioh;)
       ];
     
     result["sweng2023.sweng.GreetingResponse/6452363"] = [
@@ -123,9 +135,16 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
         @sweng2023.sweng.GreetingResponse_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/GreetingResponse;),
       ];
     
+    result["sweng2023.sweng.Miacarta/948162164"] = [
+        @sweng2023.sweng.Miacarta_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
+        @sweng2023.sweng.Miacarta_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/Miacarta;),
+        @sweng2023.sweng.Miacarta_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lsweng2023/sweng/Miacarta;)
+      ];
+    
     result["sweng2023.sweng.Varianti/497575824"] = [
         @sweng2023.sweng.Varianti_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @sweng2023.sweng.Varianti_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/Varianti;),
+        @sweng2023.sweng.Varianti_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lsweng2023/sweng/Varianti;)
       ];
     
     return result;
@@ -155,6 +174,7 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.CartaPokemon::class)] = "sweng2023.sweng.CartaPokemon/42958815";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.CartaYugioh::class)] = "sweng2023.sweng.CartaYugioh/3806726101";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.GreetingResponse::class)] = "sweng2023.sweng.GreetingResponse/6452363";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.Miacarta::class)] = "sweng2023.sweng.Miacarta/948162164";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@sweng2023.sweng.Varianti::class)] = "sweng2023.sweng.Varianti/497575824";
     return result;
   }-*/;

@@ -86,6 +86,12 @@ public class Homepage_HomepageUiBinderImpl implements UiBinder<com.google.gwt.us
       }
     };
 
+    final com.google.gwt.event.dom.client.ClickHandler handlerMethodWithNameVeryUnlikelyToCollideWithUserFieldNames6 = new com.google.gwt.event.dom.client.ClickHandler() {
+      public void onClick(com.google.gwt.event.dom.client.ClickEvent event) {
+        owner.openProfile((com.google.gwt.event.dom.client.ClickEvent) event);
+      }
+    };
+
     public Widgets(final sweng2023.sweng.Homepage owner) {
       this.owner = owner;
       build_style();  // generated css resource must be always created. Type: GENERATED_CSS. Precedence: 1
@@ -311,6 +317,7 @@ public class Homepage_HomepageUiBinderImpl implements UiBinder<com.google.gwt.us
       final com.google.gwt.user.client.ui.Button profileBtn = (com.google.gwt.user.client.ui.Button) GWT.create(com.google.gwt.user.client.ui.Button.class);
       // Setup section.
       profileBtn.setHTML(template_html3().asString());
+      profileBtn.addClickHandler(handlerMethodWithNameVeryUnlikelyToCollideWithUserFieldNames6);
 
       this.owner.profileBtn = profileBtn;
 

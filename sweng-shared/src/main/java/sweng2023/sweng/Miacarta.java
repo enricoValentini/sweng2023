@@ -19,6 +19,12 @@ public class Miacarta implements Serializable, IsSerializable{
 		this.stato = 0;
 	}
 	
+	public Miacarta(Miacarta miaCarta) {
+		this.carta = miaCarta.carta;
+		this.descrizione = miaCarta.descrizione;
+		this.stato = miaCarta.stato;
+	}
+	
 	public Miacarta(Carta carta, String descrizione, int stato) {
 		this.carta = carta;
 		this.descrizione = descrizione;

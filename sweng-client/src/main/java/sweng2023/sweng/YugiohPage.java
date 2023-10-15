@@ -1,6 +1,7 @@
 package sweng2023.sweng;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -10,6 +11,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import java.util.ArrayList;
+
+import org.eclipse.jetty.util.Promise;
 
 public class YugiohPage extends Composite  {
 
@@ -22,6 +25,7 @@ public class YugiohPage extends Composite  {
     }
 
     ArrayList<Carta> carte = new ArrayList<Carta>();
+    ArrayList<String> possessori = new ArrayList<String>();
 
     @UiField
     Button homeBtn;
@@ -51,8 +55,8 @@ public class YugiohPage extends Composite  {
 
                     @Override
                     public void onSuccess(ArrayList<Carta> result) {
-                        carte.addAll(result);
-                        updateTable(carte);
+                        //carte.addAll(result);
+                        updateTable(result);
                     }
                 });
     }
@@ -117,6 +121,8 @@ public class YugiohPage extends Composite  {
         Button closeButton = new Button("Chiudi");
         Button addPossedutaBtn = new Button("Aggiungi posseduta");
         Button addDesiderataBtn = new Button("Aggiungi desiderata");
+        Label labelPosseduta = new Label("Utenti che possiedono la carta");
+        Label labelDesiderata = new Label("Utenti che desiderano la carta");
         closeButton.addClickHandler(event -> detailsPopup.hide());
         
         contentPanel.add(closeButton);
@@ -145,9 +151,14 @@ public class YugiohPage extends Composite  {
         	
         });
         
+
         if(this.utente != null) {
         	contentPanel.add(addPossedutaBtn);
         	contentPanel.add(addDesiderataBtn);
+        	//contentPanel.add(labelPosseduta);
+        	this.getPossessori(carta, 0, contentPanel);
+        	//contentPanel.add(labelDesiderata);
+        	this.getPossessori(carta, 1, contentPanel);
         }
 
         int left = clickX - detailsPopup.getOffsetWidth() / 2;
@@ -156,6 +167,28 @@ public class YugiohPage extends Composite  {
         detailsPopup.setPopupPosition(left, top);
         detailsPopup.show();
     }
+    
+    private void getPossessori(Carta carta, int tipo, VerticalPanel panel){
+    	greetingService.getPossessori(carta, tipo, 
+    			new AsyncCallback<ArrayList<String>>(){
 
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onSuccess(ArrayList<String> result) {
+						for (String possessore: result) {
+							if (tipo == 0)
+								panel.add(new Label("Posseduta da: " + possessore));
+							else
+								panel.add(new Label("Desiderata da: " + possessore));
+						}
+					}
+    		
+    	});
+    }
 
 }

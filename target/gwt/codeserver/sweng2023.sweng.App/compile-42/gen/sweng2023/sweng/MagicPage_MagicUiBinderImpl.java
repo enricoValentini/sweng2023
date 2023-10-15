@@ -41,6 +41,12 @@ public class MagicPage_MagicUiBinderImpl implements UiBinder<com.google.gwt.user
     private final sweng2023.sweng.MagicPage owner;
 
 
+    final com.google.gwt.event.dom.client.ClickHandler handlerMethodWithNameVeryUnlikelyToCollideWithUserFieldNames1 = new com.google.gwt.event.dom.client.ClickHandler() {
+      public void onClick(com.google.gwt.event.dom.client.ClickEvent event) {
+        owner.backHome((com.google.gwt.event.dom.client.ClickEvent) event);
+      }
+    };
+
     public Widgets(final sweng2023.sweng.MagicPage owner) {
       this.owner = owner;
       build_domId0();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
@@ -123,6 +129,7 @@ public class MagicPage_MagicUiBinderImpl implements UiBinder<com.google.gwt.user
       final com.google.gwt.user.client.ui.Button homeBtn = (com.google.gwt.user.client.ui.Button) GWT.create(com.google.gwt.user.client.ui.Button.class);
       // Setup section.
       homeBtn.setHTML(template_html1().asString());
+      homeBtn.addClickHandler(handlerMethodWithNameVeryUnlikelyToCollideWithUserFieldNames1);
 
       this.owner.homeBtn = homeBtn;
 

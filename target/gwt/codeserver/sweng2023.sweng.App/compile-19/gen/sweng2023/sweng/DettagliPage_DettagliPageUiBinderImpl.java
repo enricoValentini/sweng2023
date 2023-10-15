@@ -1,4 +1,4 @@
-// .ui.xml template last modified: 1697031596520
+// .ui.xml template last modified: 1697120257319
 package sweng2023.sweng;
 
 import com.google.gwt.core.client.GWT;
@@ -20,8 +20,11 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
     @Template("Aggiungi carta")
     SafeHtml html1();
      
-    @Template("<h1>Aggiungi dettaglio e stato alla tua carta</h1> <span id='{0}'></span> <span id='{1}'></span> <span id='{2}'></span> <span id='{3}'></span> <span id='{4}'></span>")
-    SafeHtml html2(String arg0, String arg1, String arg2, String arg3, String arg4);
+    @Template("Torna alle carte")
+    SafeHtml html2();
+     
+    @Template("<h1>Aggiungi dettaglio e stato alla tua carta</h1> <span id='{0}'></span> <span id='{1}'></span> <span id='{2}'></span> <span id='{3}'></span> <span id='{4}'></span> <span id='{5}'></span> <span id='{6}'></span>")
+    SafeHtml html3(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5, String arg6);
      
   }
 
@@ -47,6 +50,12 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
       }
     };
 
+    final com.google.gwt.event.dom.client.ClickHandler handlerMethodWithNameVeryUnlikelyToCollideWithUserFieldNames2 = new com.google.gwt.event.dom.client.ClickHandler() {
+      public void onClick(com.google.gwt.event.dom.client.ClickEvent event) {
+        owner.backToListing((com.google.gwt.event.dom.client.ClickEvent) event);
+      }
+    };
+
     public Widgets(final sweng2023.sweng.DettagliPage owner) {
       this.owner = owner;
       build_style();  // generated css resource must be always created. Type: GENERATED_CSS. Precedence: 1
@@ -55,18 +64,25 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
       build_domId2();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
       build_domId3();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
       build_domId4();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
+      build_domId5();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
+      build_domId6();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
       build_domId0Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
       build_domId1Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
       build_domId2Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
       build_domId3Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
       build_domId4Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
+      build_domId5Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
+      build_domId6Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
     }
 
     SafeHtml template_html1() {
       return template.html1();
     }
     SafeHtml template_html2() {
-      return template.html2(get_domId0(), get_domId1(), get_domId2(), get_domId3(), get_domId4());
+      return template.html2();
+    }
+    SafeHtml template_html3() {
+      return template.html3(get_domId0(), get_domId1(), get_domId2(), get_domId3(), get_domId4(), get_domId5(), get_domId6());
     }
 
     /**
@@ -106,7 +122,7 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
     }
     private com.google.gwt.user.client.ui.HTMLPanel build_f_HTMLPanel1() {
       // Creation section.
-      final com.google.gwt.user.client.ui.HTMLPanel f_HTMLPanel1 = new com.google.gwt.user.client.ui.HTMLPanel(template_html2().asString());
+      final com.google.gwt.user.client.ui.HTMLPanel f_HTMLPanel1 = new com.google.gwt.user.client.ui.HTMLPanel(template_html3().asString());
       // Setup section.
 
       {
@@ -118,6 +134,8 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
         get_domId2Element().get();
         get_domId3Element().get();
         get_domId4Element().get();
+        get_domId5Element().get();
+        get_domId6Element().get();
 
         // Detach section.
         __attachRecord__.detach();
@@ -127,6 +145,8 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
       f_HTMLPanel1.addAndReplaceElement(get_descLabel(), get_domId2Element().get());
       f_HTMLPanel1.addAndReplaceElement(get_descBox(), get_domId3Element().get());
       f_HTMLPanel1.addAndReplaceElement(get_addBtn(), get_domId4Element().get());
+      f_HTMLPanel1.addAndReplaceElement(get_errorLabel(), get_domId5Element().get());
+      f_HTMLPanel1.addAndReplaceElement(get_backBtn(), get_domId6Element().get());
 
       return f_HTMLPanel1;
     }
@@ -205,6 +225,9 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
       // Setup section.
       statoBox.addItem("1", "1");
       statoBox.addItem("2", "2");
+      statoBox.addItem("3", "3");
+      statoBox.addItem("4", "4");
+      statoBox.addItem("5", "5");
 
       this.owner.statoBox = statoBox;
 
@@ -251,7 +274,7 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
       // Creation section.
       final com.google.gwt.user.client.ui.Label descLabel = (com.google.gwt.user.client.ui.Label) GWT.create(com.google.gwt.user.client.ui.Label.class);
       // Setup section.
-      descLabel.setText("Stato della carta");
+      descLabel.setText("Descrizione della carta");
 
       this.owner.descLabel = descLabel;
 
@@ -365,6 +388,100 @@ public class DettagliPage_DettagliPageUiBinderImpl implements UiBinder<com.googl
       // Setup section.
 
       return domId4Element;
+    }
+
+    /**
+     * Getter for domId5 called 2 times. Type: DOM_ID_HOLDER. Build precedence: 2.
+     */
+    private java.lang.String domId5;
+    private java.lang.String get_domId5() {
+      return domId5;
+    }
+    private java.lang.String build_domId5() {
+      // Creation section.
+      domId5 = com.google.gwt.dom.client.Document.get().createUniqueId();
+      // Setup section.
+
+      return domId5;
+    }
+
+    /**
+     * Getter for errorLabel called 1 times. Type: DEFAULT. Build precedence: 2.
+     */
+    private com.google.gwt.user.client.ui.Label get_errorLabel() {
+      return build_errorLabel();
+    }
+    private com.google.gwt.user.client.ui.Label build_errorLabel() {
+      // Creation section.
+      final com.google.gwt.user.client.ui.Label errorLabel = (com.google.gwt.user.client.ui.Label) GWT.create(com.google.gwt.user.client.ui.Label.class);
+      // Setup section.
+
+      this.owner.errorLabel = errorLabel;
+
+      return errorLabel;
+    }
+
+    /**
+     * Getter for domId5Element called 2 times. Type: DEFAULT. Build precedence: 2.
+     */
+    private com.google.gwt.uibinder.client.LazyDomElement domId5Element;
+    private com.google.gwt.uibinder.client.LazyDomElement get_domId5Element() {
+      return domId5Element;
+    }
+    private com.google.gwt.uibinder.client.LazyDomElement build_domId5Element() {
+      // Creation section.
+      domId5Element = new com.google.gwt.uibinder.client.LazyDomElement<Element>(get_domId5());
+      // Setup section.
+
+      return domId5Element;
+    }
+
+    /**
+     * Getter for domId6 called 2 times. Type: DOM_ID_HOLDER. Build precedence: 2.
+     */
+    private java.lang.String domId6;
+    private java.lang.String get_domId6() {
+      return domId6;
+    }
+    private java.lang.String build_domId6() {
+      // Creation section.
+      domId6 = com.google.gwt.dom.client.Document.get().createUniqueId();
+      // Setup section.
+
+      return domId6;
+    }
+
+    /**
+     * Getter for backBtn called 1 times. Type: DEFAULT. Build precedence: 2.
+     */
+    private com.google.gwt.user.client.ui.Button get_backBtn() {
+      return build_backBtn();
+    }
+    private com.google.gwt.user.client.ui.Button build_backBtn() {
+      // Creation section.
+      final com.google.gwt.user.client.ui.Button backBtn = (com.google.gwt.user.client.ui.Button) GWT.create(com.google.gwt.user.client.ui.Button.class);
+      // Setup section.
+      backBtn.setHTML(template_html2().asString());
+      backBtn.addClickHandler(handlerMethodWithNameVeryUnlikelyToCollideWithUserFieldNames2);
+
+      this.owner.backBtn = backBtn;
+
+      return backBtn;
+    }
+
+    /**
+     * Getter for domId6Element called 2 times. Type: DEFAULT. Build precedence: 2.
+     */
+    private com.google.gwt.uibinder.client.LazyDomElement domId6Element;
+    private com.google.gwt.uibinder.client.LazyDomElement get_domId6Element() {
+      return domId6Element;
+    }
+    private com.google.gwt.uibinder.client.LazyDomElement build_domId6Element() {
+      // Creation section.
+      domId6Element = new com.google.gwt.uibinder.client.LazyDomElement<Element>(get_domId6());
+      // Setup section.
+
+      return domId6Element;
     }
   }
 }

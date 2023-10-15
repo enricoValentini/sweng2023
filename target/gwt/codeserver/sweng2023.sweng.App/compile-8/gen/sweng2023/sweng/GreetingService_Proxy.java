@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.impl.RpcStatsContext;
 
 public class GreetingService_Proxy extends RemoteServiceProxy implements sweng2023.sweng.GreetingServiceAsync {
   private static final String REMOTE_SERVICE_INTERFACE_NAME = "sweng2023.sweng.GreetingService";
-  private static final String SERIALIZATION_POLICY ="35CD2282980DE65545D75A3CE6CC79F2";
+  private static final String SERIALIZATION_POLICY ="60F4D4CF28ACF0A015EA4C93354781DD";
   private static final sweng2023.sweng.GreetingService_TypeSerializer SERIALIZER = new sweng2023.sweng.GreetingService_TypeSerializer();
   
   public GreetingService_Proxy() {
@@ -21,6 +21,38 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements sweng20
       "greet", 
       SERIALIZATION_POLICY, 
       SERIALIZER);
+  }
+  
+  public void addPossedutaDesiderata(java.lang.String email, sweng2023.sweng.Miacarta carta, int tipo, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "addPossedutaDesiderata");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 3);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("sweng2023.sweng.Miacarta/948162164");
+      streamWriter.writeString("I");
+      streamWriter.writeString(email);
+      streamWriter.writeObject(carta);
+      streamWriter.writeInt(tipo);
+      helper.finish(callback, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void deletePossedutaDesiderata(java.lang.String email, int tipo, int indexOf, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "deletePossedutaDesiderata");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 3);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("I");
+      streamWriter.writeString("I");
+      streamWriter.writeString(email);
+      streamWriter.writeInt(tipo);
+      streamWriter.writeInt(indexOf);
+      helper.finish(callback, ResponseReader.VOID);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
   }
   
   public void getCarte(java.lang.String filename, java.lang.String mapName, com.google.gwt.user.client.rpc.AsyncCallback callback) {
@@ -31,6 +63,34 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements sweng20
       streamWriter.writeString("java.lang.String/2004016611");
       streamWriter.writeString(filename);
       streamWriter.writeString(mapName);
+      helper.finish(callback, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void getPosseduteDesiderate(java.lang.String email, int tipo, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "getPosseduteDesiderate");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 2);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("I");
+      streamWriter.writeString(email);
+      streamWriter.writeInt(tipo);
+      helper.finish(callback, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void getPossessori(sweng2023.sweng.Carta carta, int tipo, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "getPossessori");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 2);
+      streamWriter.writeString("sweng2023.sweng.Carta/2695169999");
+      streamWriter.writeString("I");
+      streamWriter.writeObject(carta);
+      streamWriter.writeInt(tipo);
       helper.finish(callback, ResponseReader.OBJECT);
     } catch (SerializationException ex) {
       callback.onFailure(ex);
@@ -72,6 +132,24 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements sweng20
       streamWriter.writeString(username);
       streamWriter.writeString(password);
       helper.finish(callback, ResponseReader.STRING);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void updatePossedutaDesiderata(java.lang.String email, int tipo, int indexOf, sweng2023.sweng.Miacarta updatedCarta, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "updatePossedutaDesiderata");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 4);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("I");
+      streamWriter.writeString("I");
+      streamWriter.writeString("sweng2023.sweng.Miacarta/948162164");
+      streamWriter.writeString(email);
+      streamWriter.writeInt(tipo);
+      streamWriter.writeInt(indexOf);
+      streamWriter.writeObject(updatedCarta);
+      helper.finish(callback, ResponseReader.OBJECT);
     } catch (SerializationException ex) {
       callback.onFailure(ex);
     }

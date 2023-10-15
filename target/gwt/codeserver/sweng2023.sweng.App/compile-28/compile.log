@@ -1,47 +1,13 @@
 binding: user.agent=safari
 Compiling module sweng2023.sweng.App
-   Computing all possible rebind results for 'sweng2023.sweng.GreetingService'
-      Rebinding sweng2023.sweng.GreetingService
-         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
-            Generating client proxy for remote service interface 'sweng2023.sweng.GreetingService'
-               [ERROR] 'sweng2023.sweng.Miacarta' has no instantiable subtypes
-   [ERROR] Errors in 'sweng2023/sweng/App.java'
-      [ERROR] Line 36: Failed to resolve 'sweng2023.sweng.GreetingService' via deferred binding
-   Computing all possible rebind results for 'sweng2023.sweng.GreetingService'
-      Rebinding sweng2023.sweng.GreetingService
-         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
-            Generating client proxy for remote service interface 'sweng2023.sweng.GreetingService'
-               [ERROR] 'sweng2023.sweng.Miacarta' has no instantiable subtypes
-   [ERROR] Errors in 'sweng2023/sweng/Register.java'
-      [ERROR] Line 19: Failed to resolve 'sweng2023.sweng.GreetingService' via deferred binding
-   Computing all possible rebind results for 'sweng2023.sweng.GreetingService'
-      Rebinding sweng2023.sweng.GreetingService
-         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
-            Generating client proxy for remote service interface 'sweng2023.sweng.GreetingService'
-               [ERROR] 'sweng2023.sweng.Miacarta' has no instantiable subtypes
-   [ERROR] Errors in 'sweng2023/sweng/YugiohPage.java'
-      [ERROR] Line 18: Failed to resolve 'sweng2023.sweng.GreetingService' via deferred binding
-   Computing all possible rebind results for 'sweng2023.sweng.GreetingService'
-      Rebinding sweng2023.sweng.GreetingService
-         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
-            Generating client proxy for remote service interface 'sweng2023.sweng.GreetingService'
-               [ERROR] 'sweng2023.sweng.Miacarta' has no instantiable subtypes
-   [ERROR] Errors in 'sweng2023/sweng/PokemonPage.java'
-      [ERROR] Line 15: Failed to resolve 'sweng2023.sweng.GreetingService' via deferred binding
-   Computing all possible rebind results for 'sweng2023.sweng.GreetingService'
-      Rebinding sweng2023.sweng.GreetingService
-         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
-            Generating client proxy for remote service interface 'sweng2023.sweng.GreetingService'
-               [ERROR] 'sweng2023.sweng.Miacarta' has no instantiable subtypes
-   [ERROR] Errors in 'sweng2023/sweng/Login.java'
-      [ERROR] Line 19: Failed to resolve 'sweng2023.sweng.GreetingService' via deferred binding
-   Computing all possible rebind results for 'sweng2023.sweng.GreetingService'
-      Rebinding sweng2023.sweng.GreetingService
-         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
-            Generating client proxy for remote service interface 'sweng2023.sweng.GreetingService'
-               [ERROR] 'sweng2023.sweng.Miacarta' has no instantiable subtypes
-   [ERROR] Errors in 'sweng2023/sweng/MagicPage.java'
-      [ERROR] Line 15: Failed to resolve 'sweng2023.sweng.GreetingService' via deferred binding
-   Unification traversed 835 fields and methods and 478 types. 8 are considered part of the current module and 16 had all of their fields and methods traversed.
-   [WARN] Some stale types ([sweng2023.sweng.GreetingService_Proxy]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
-[ERROR] Compiler returned false
+   Unification traversed 881 fields and methods and 498 types. 12 are considered part of the current module and 20 had all of their fields and methods traversed.
+   Compiling 1 permutation
+      Compiling permutation 0...
+      Linking per-type JS with 12 new/changed types.
+      Source Maps Enabled
+   Compile of permutations succeeded
+   Compilation succeeded -- 1,707s
+Linking into C:\Users\Admin\Desktop\progetto_sweng\sweng2023\target\gwt\codeserver\sweng2023.sweng.App\compile-28\war\app; Writing extras to C:\Users\Admin\Desktop\progetto_sweng\sweng2023\target\gwt\codeserver\sweng2023.sweng.App\compile-28\extras\app
+   Link succeeded
+   Linking succeeded -- 0,188s
+1,996s total -- Compile completed
