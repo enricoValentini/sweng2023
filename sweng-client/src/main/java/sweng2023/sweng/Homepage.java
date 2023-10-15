@@ -86,6 +86,12 @@ public class Homepage extends Composite {
 		RootPanel.get().add(magic);
 	}
 
+	@UiHandler("profileBtn")
+	void openProfile(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite profilo = new ProfiloPage(this.user);
+		RootPanel.get().add(profilo);
+	}
 
 
 

@@ -58,8 +58,8 @@ public class PokemonPage extends Composite  {
 
                     @Override
                     public void onSuccess(ArrayList<Carta> result) {
-                        carte.addAll(result);
-                        updateTable(carte);
+                        //carte.addAll(result);
+                        updateTable(result);
                     }
                 });
     }
@@ -150,6 +150,10 @@ public class PokemonPage extends Composite  {
         if(this.utente != null) {
         	contentPanel.add(addPossedutaBtn);
         	contentPanel.add(addDesiderataBtn);
+        	//contentPanel.add(labelPosseduta);
+        	this.getPossessori(carta, 0, contentPanel);
+        	//contentPanel.add(labelDesiderata);
+        	this.getPossessori(carta, 1, contentPanel);
         }
 
         int left = clickX - detailsPopup.getOffsetWidth() / 2;
@@ -159,6 +163,29 @@ public class PokemonPage extends Composite  {
         detailsPopup.show();
 
 
+    }
+    
+    private void getPossessori(Carta carta, int tipo, VerticalPanel panel){
+    	greetingService.getPossessori(carta, tipo, 
+    			new AsyncCallback<ArrayList<String>>(){
+
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onSuccess(ArrayList<String> result) {
+						for (String possessore: result) {
+							if (tipo == 0)
+								panel.add(new Label("Posseduta da: " + possessore));
+							else
+								panel.add(new Label("Desiderata da: " + possessore));
+						}
+					}
+    		
+    	});
     }
 
 

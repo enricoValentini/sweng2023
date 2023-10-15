@@ -136,8 +136,8 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
       ];
     
     result["sweng2023.sweng.Miacarta/948162164"] = [
-        ,
-        ,
+        @sweng2023.sweng.Miacarta_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
+        @sweng2023.sweng.Miacarta_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lsweng2023/sweng/Miacarta;),
         @sweng2023.sweng.Miacarta_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lsweng2023/sweng/Miacarta;)
       ];
     

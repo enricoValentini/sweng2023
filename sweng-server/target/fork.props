@@ -1,5 +1,5 @@
 #properties for forked webapp
-#Wed Oct 11 18:30:38 CEST 2023
+#Sun Oct 15 19:38:56 CEST 2023
 base.dirs=file\:///C\:/Users/Admin/Desktop/progetto_sweng/sweng2023/sweng-server/src/main/webapp/,file\:///C\:/Users/Admin/Desktop/progetto_sweng/sweng2023/target/gwt/launcherDir/
 classes.dir=C\:\\Users\\Admin\\Desktop\\progetto_sweng\\sweng2023\\sweng-server\\target\\classes
 context.path=/

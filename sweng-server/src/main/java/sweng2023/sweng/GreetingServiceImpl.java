@@ -4,6 +4,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.mapdb.*;
 
@@ -95,23 +96,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 
 	@Override
 	public Boolean addPossedutaDesiderata(String email,Miacarta carta, int tipo) {
-		/*DB db = DBMaker.fileDB("possedute.db").make();
-		HTreeMap<String, List<Miacarta>> possedute = db.hashMap("possedute")
-				.keySerializer(Serializer.STRING)
-				.valueSerializer(Serializer.JAVA)
-				.createOrOpen();
-
-		if (possedute.get(email) == null) {
-			List<Miacarta> owned = new ArrayList<Miacarta>();
-			owned.add(carta);
-			possedute.put(email, owned);
-		}else {
-			possedute.get(email).add(carta);
-		}
-			
-
-		db.close();
-		return true;*/
 		String dbName;
 		DB db;
 		
@@ -133,11 +117,136 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 			owned.add(carta);
 			carte.put(email, owned);
 		}else {
-			carte.get(email).add(carta);
+			List<Miacarta> mieCarte = carte.get(email);
+			mieCarte.add(carta);
+			carte.put(email, mieCarte);
 		}
+		
+		//System.out.println("Le carte sono ora " + carte.get(email).size());
 		
 		db.close();
 		return true;
 	}
 
+	@Override
+	public ArrayList<Miacarta> getPosseduteDesiderate(String email, int tipo) {
+		String dbName;
+		DB db;
+		
+		if (tipo == 0) {
+			db = DBMaker.fileDB("possedute.db").make();
+			dbName = "possedute";
+		}else {
+			db = DBMaker.fileDB("desiderate.db").make();
+			dbName = "desiderate";
+		}
+		
+		HTreeMap<String, List<Miacarta>> carte = db.hashMap(dbName)
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		ArrayList<Miacarta> mieCarte = new ArrayList<Miacarta>();
+		
+		if (carte.get(email) != null) {
+			mieCarte.addAll(carte.get(email));
+		}
+		
+		db.close();
+		return mieCarte;
+	}
+
+	@Override
+	public void deletePossedutaDesiderata(String email, int tipo, int indexOf) {
+		// TODO Auto-generated method stub
+		String dbName;
+		DB db;
+		
+		if (tipo == 0) {
+			db = DBMaker.fileDB("possedute.db").make();
+			dbName = "possedute";
+		}else {
+			db = DBMaker.fileDB("desiderate.db").make();
+			dbName = "desiderate";
+		}
+		
+		HTreeMap<String, List<Miacarta>> carte = db.hashMap(dbName)
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		List<Miacarta> mieCarte = carte.get(email);
+		System.out.println(mieCarte.size());
+		mieCarte.remove(indexOf);
+		System.out.println(mieCarte.size());
+		carte.put(email, mieCarte);
+		
+		db.close();
+	}
+
+	@Override
+	public Boolean updatePossedutaDesiderata(String email, int tipo, int indexOf, Miacarta updatedCarta) {
+		// TODO Auto-generated method stub
+		String dbName;
+		DB db;
+		
+		if (tipo == 0) {
+			db = DBMaker.fileDB("possedute.db").make();
+			dbName = "possedute";
+		}else {
+			db = DBMaker.fileDB("desiderate.db").make();
+			dbName = "desiderate";
+		}
+		
+		HTreeMap<String, List<Miacarta>> carte = db.hashMap(dbName)
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		List<Miacarta> mieCarte = carte.get(email);
+		mieCarte.remove(indexOf);
+		mieCarte.add(indexOf, updatedCarta);
+		carte.put(email, mieCarte);
+		
+		db.close();
+		
+		return true;
+	}
+
+	@Override
+	public ArrayList<String> getPossessori(Carta carta, int tipo) {
+		String dbName;
+		DB db;
+		
+		if (tipo == 0) {
+			db = DBMaker.fileDB("possedute.db").make();
+			dbName = "possedute";
+		}else {
+			db = DBMaker.fileDB("desiderate.db").make();
+			dbName = "desiderate";
+		}
+		
+		HTreeMap<String, List<Miacarta>> carte = db.hashMap(dbName)
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		ArrayList<String> possessori = new ArrayList<String>();
+		for (Entry<String, List<Miacarta>> entry : carte.entrySet()) {
+            String key = entry.getKey();
+            List<Miacarta> value = entry.getValue();
+            for (Miacarta miaCarta : value) {
+            	if (miaCarta.carta.name.equals(carta.name)) {
+            		System.out.println(key);
+            		possessori.add(key);
+            		break;
+            	}
+            		
+            }
+        }
+		
+		db.close();
+
+		return possessori;
+	}
 }
