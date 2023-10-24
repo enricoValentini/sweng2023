@@ -10,6 +10,9 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PokemonPage extends Composite  {
 
@@ -22,9 +25,23 @@ public class PokemonPage extends Composite  {
     }
 
     ArrayList<Carta> carte = new ArrayList<Carta>();
+    private Set<String> uniqueTypes = new HashSet<>();
+    private Set<String> uniqueRarities = new HashSet<>();
 
     @UiField
     Button homeBtn;
+
+    @UiField
+    TextBox nameFilter;
+
+    @UiField
+    ListBox  typesFilter;
+
+    @UiField
+    ListBox  rarityFilter;
+
+    @UiField
+    Button searchButton;
 
     @UiField
     FlexTable cardTable;
@@ -45,6 +62,20 @@ public class PokemonPage extends Composite  {
 		RootPanel.get().add(homepage);
     }
 
+    @UiHandler("searchButton")
+    void onClick(ClickEvent e) {
+
+        FilterPokemon filter = new FilterPokemon();
+        filter.setName(nameFilter.getValue());
+        filter.setTypes(typesFilter.getSelectedValue());
+        filter.setRarity(rarityFilter.getSelectedValue());
+
+        updateTable(carte, filter);
+
+
+
+    }
+
     @Override
     public void onLoad() {
         greetingService.getCarte("pokemon.db", "pokemon",
@@ -58,14 +89,50 @@ public class PokemonPage extends Composite  {
 
                     @Override
                     public void onSuccess(ArrayList<Carta> result) {
-                        //carte.addAll(result);
-                        updateTable(result);
+                        carte.addAll(result);
+                        //homeBtn.setText("" + result.size());
+                        carte = result;
+                        updateTable(result,null);
+                        uniqueTypes.add("");
+                        uniqueRarities.add("");
+                        for (Carta carta : carte) {
+                            CartaPokemon CartaPokemon = (CartaPokemon) carta;
+                            if(CartaPokemon.getTypes()!=null){
+                                for(String type : CartaPokemon.getTypes()){
+                                    uniqueTypes.add(type);
+                                }
+                            }
+
+                            uniqueRarities.add(CartaPokemon.getRarity());
+                        }
+                        // Popola le listbox con elementi unici
+                        populateListBox(rarityFilter, uniqueRarities);
+                        populateListBox(typesFilter, uniqueTypes);
                     }
                 });
     }
 
-    private void updateTable(ArrayList<Carta> carte) {
+    private void populateListBox(ListBox listBox, Set<String> items) {
+        listBox.clear();
+        for (String item : items) {
+            listBox.addItem(item);
+        }
+    }
+
+    private void updateTable(ArrayList<Carta> carte, FilterPokemon filter) {
+        ArrayList<Carta> filtered;
         cardTable.removeAllRows();
+        if (filter == null) {
+            filtered = carte;
+        } else {
+            //applica il filtro
+            filtered = new ArrayList<>();
+            for (Carta carta : carte) {
+                if (filter.passesFilter(carta)) {
+                    filtered.add(carta);
+                }
+            }
+        }
 
         // max length for each row
         final int MAX_WIDTH = 1000;
@@ -74,7 +141,7 @@ public class PokemonPage extends Composite  {
         HorizontalPanel currentRowPanel = new HorizontalPanel();
         int currentWidth = 0;
 
-        for (Carta carta : carte) {
+        for (Carta carta : filtered) {
             Image thumbnail = new Image("https://i.pinimg.com/236x/bb/e0/b1/bbe0b1c06a432360d773b4895bffbb51.jpg");
             thumbnail.addClickHandler(event -> {
                 int clickX = event.getClientX();

@@ -1,5 +1,6 @@
 package sweng2023.sweng;
 
+import com.gargoylesoftware.htmlunit.javascript.host.Console;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -11,6 +12,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.jetty.util.Promise;
 
@@ -26,9 +29,20 @@ public class YugiohPage extends Composite  {
 
     ArrayList<Carta> carte = new ArrayList<Carta>();
     ArrayList<String> possessori = new ArrayList<String>();
+    private Set<String> uniqueRaces = new HashSet<>();
+    private Set<String> uniquetypes = new HashSet<>();
 
     @UiField
     Button homeBtn;
+
+    @UiField
+    TextBox nameFilter;
+
+    @UiField
+    ListBox  raceFilter;
+
+    @UiField
+    ListBox  typeFilter;
 
     @UiField
     FlexTable cardTable;
@@ -36,9 +50,33 @@ public class YugiohPage extends Composite  {
     Utente utente;
 
 
+
+
     public YugiohPage(Utente utente) {
         initWidget(UiBinder.createAndBindUi(this));
         this.utente = utente;
+
+    }
+
+    @UiHandler("homeBtn")
+    void backHome(ClickEvent e) {
+        RootPanel.get().clear();
+        Composite homepage = new Homepage(this.utente);
+        RootPanel.get().add(homepage);
+    }
+
+    @UiHandler("searchButton")
+    void onClick(ClickEvent e) {
+
+        // Crea e applica il filtro
+        FilterYugioh filter = new FilterYugioh();
+
+        filter.setName(nameFilter.getValue());
+        filter.setType(typeFilter.getSelectedValue());
+        filter.setRace(raceFilter.getSelectedValue());
+
+        // Chiamare il metodo che gestisce l'aggiornamento della tabella
+        updateTable(carte, filter);
 
     }
 
@@ -55,21 +93,46 @@ public class YugiohPage extends Composite  {
 
                     @Override
                     public void onSuccess(ArrayList<Carta> result) {
-                        //carte.addAll(result);
-                        updateTable(result);
+                        carte.addAll(result);
+                        //homeBtn.setText("" + result.size());
+                        carte = result;
+                        updateTable(result,null);
+                        uniquetypes.add("");
+                        uniqueRaces.add("");
+                        for (Carta carta : carte) {
+                            CartaYugioh cartaYugioh = (CartaYugioh) carta;
+                            uniqueRaces.add(cartaYugioh.getRace());
+                            uniquetypes.add(cartaYugioh.getType());
+                        }
+                        // Popola le listbox con elementi unici
+                        populateListBox(raceFilter, uniqueRaces);
+                        populateListBox(typeFilter, uniquetypes);
                     }
                 });
     }
-    
-    @UiHandler("homeBtn")
-    void backHome(ClickEvent e) {
-    	RootPanel.get().clear();
-		Composite homepage = new Homepage(this.utente);
-		RootPanel.get().add(homepage);
+
+    private void populateListBox(ListBox listBox, Set<String> items) {
+        listBox.clear();
+        for (String item : items) {
+            listBox.addItem(item);
+        }
     }
 
-    private void updateTable(ArrayList<Carta> carte) {
+    private void updateTable(ArrayList<Carta> carte, FilterYugioh filter) {
+        ArrayList<Carta> filtered;
         cardTable.removeAllRows();
+        if (filter == null) {
+            // Se il filtro è nullo, mostra tutte le carte senza filtro
+            filtered = carte;
+        } else {
+            //applica il filtro
+            filtered = new ArrayList<>();
+            for (Carta carta : carte) {
+                if (filter.passesFilter(carta)) {
+                    filtered.add(carta);
+                }
+            }
+        }
 
         // max length for each row
         final int MAX_WIDTH = 1000;
@@ -78,7 +141,7 @@ public class YugiohPage extends Composite  {
         HorizontalPanel currentRowPanel = new HorizontalPanel();
         int currentWidth = 0;
 
-        for (Carta carta : carte) {
+        for (Carta carta : filtered) {
             CartaYugioh cartayugioh = (CartaYugioh) carta;
             Image thumbnail = new Image(cartayugioh.getSmallImageUrl());
 

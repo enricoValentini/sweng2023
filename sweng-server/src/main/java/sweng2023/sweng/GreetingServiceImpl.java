@@ -80,6 +80,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public ArrayList<Carta> getCarte(String filename, String mapName) {
 		DB db = DBMaker.fileDB(filename).make();
+
 		HTreeMap<Integer, Carta> carteMap = db.hashMap(mapName)
 				.keySerializer(Serializer.INTEGER)
 				.valueSerializer(Serializer.JAVA)

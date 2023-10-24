@@ -7,7 +7,22 @@
     <g:HTMLPanel>
         <h1>Pokemon Cards</h1>
         <g:Button ui:field="homeBtn">Torna alla home</g:Button>
+        <br/><br/><br/>
 
+        <g:Label>Name Filter:</g:Label>
+        <g:TextBox ui:field="nameFilter"></g:TextBox>
+        <br/><br/>
+
+        <g:Label>Types Filter:</g:Label>
+        <g:ListBox ui:field="typesFilter" />
+
+        <g:Label>Rarity Filter:</g:Label>
+        <g:ListBox ui:field="rarityFilter" />
+        <br/><br/>
+
+
+        <g:Button ui:field="searchButton">Search</g:Button>
+        <br/><br/><br/>
         <!-- Aggiungi la tua tabella qui -->
         <g:FlexTable ui:field="cardTable">
             <!-- ... -->

@@ -9,7 +9,13 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.ListBox;
+
+
+
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MagicPage extends Composite {
 
@@ -22,13 +28,32 @@ public class MagicPage extends Composite {
     }
 
     ArrayList<Carta> carte = new ArrayList<Carta>();
+    Utente utente;
 
     @UiField
     Button homeBtn;
 
     @UiField
     FlexTable cardTable;
-    Utente utente;
+
+    @UiField
+    TextBox nameFilter;
+
+    @UiField
+    ListBox  artistFilter;
+
+    @UiField
+    ListBox  rarityFilter;
+
+
+
+    private Set<String> uniqueArtists = new HashSet<>();
+    private Set<String> uniqueRarities = new HashSet<>();
+
+
+
+    @UiField
+    Button searchButton;
 
 
     public MagicPage(Utente utente) {
@@ -44,6 +69,22 @@ public class MagicPage extends Composite {
 		RootPanel.get().add(homepage);
     }
 
+    @UiHandler("searchButton")
+    void onClick(ClickEvent e) {
+
+        // Crea e applica il filtro
+        FilterMagic filter = new FilterMagic();
+        filter.setName(nameFilter.getValue());
+        filter.setArtist(artistFilter.getSelectedValue());
+        filter.setRarity(rarityFilter.getSelectedValue());
+
+
+        // Chiamare il metodo che gestisce l'aggiornamento della tabella
+        updateTable(carte, filter);
+    }
+
+
+
     @Override
     public void onLoad() {
         greetingService.getCarte("magic.db", "magic",
@@ -57,16 +98,46 @@ public class MagicPage extends Composite {
 
                     @Override
                     public void onSuccess(ArrayList<Carta> result) {
-                        //carte.addAll(result);
+                        carte.addAll(result);
                         //homeBtn.setText("" + result.size());
-                        updateTable(result);
+                        carte = result;
+                        updateTable(result,null);
+                        uniqueArtists.add("");
+                        uniqueRarities.add("");
+                        for (Carta carta : carte) {
+                            CartaMagic cartaMagic = (CartaMagic) carta;
+                            uniqueArtists.add(cartaMagic.getArtist());
+                            uniqueRarities.add(cartaMagic.getRarity());
+                        }
+                        // Popola le listbox con elementi unici
+                        populateListBox(artistFilter, uniqueArtists);
+                        populateListBox(rarityFilter, uniqueRarities);
                     }
                 });
     }
 
-    private void updateTable(ArrayList<Carta> carte) {
-        cardTable.removeAllRows();
+    private void populateListBox(ListBox listBox, Set<String> items) {
+        listBox.clear();
+        for (String item : items) {
+            listBox.addItem(item);
+        }
+    }
 
+    private void updateTable(ArrayList<Carta> carte,  FilterMagic filter ) {
+        ArrayList<Carta> filtered;
+        cardTable.removeAllRows();
+        if (filter == null) {
+            // Se il filtro è nullo, mostra tutte le carte senza filtro
+            filtered = carte;
+        } else {
+            //applica il filtro
+            filtered = new ArrayList<>();
+            for (Carta carta : carte) {
+                if (filter.passesFilter(carta)) {
+                    filtered.add(carta);
+                }
+            }
+        }
         // max length for each row
         final int MAX_WIDTH = 1000;
 
@@ -74,7 +145,8 @@ public class MagicPage extends Composite {
         HorizontalPanel currentRowPanel = new HorizontalPanel();
         int currentWidth = 0;
 
-        for (Carta carta : carte) {
+        for (Carta carta : filtered) {
+
             Image thumbnail = new Image("https://i.pinimg.com/236x/c5/66/bc/c566bc7352fef62a6076c2d454fcc097.jpg");
             thumbnail.addClickHandler(event -> {
                 int clickX = event.getClientX();
@@ -109,7 +181,7 @@ public class MagicPage extends Composite {
         contentPanel.add(new HTML("Nome: " + cartamagic.getName()));
         contentPanel.add(new HTML("Artista: " + cartamagic.getArtist()));
         contentPanel.add(new HTML("Testo: " + cartamagic.getText()));
-        contentPanel.add(new HTML("Tipi: " + cartamagic.getTypes()));
+        contentPanel.add(new HTML("Tipi: " + cartamagic.getType()));
         contentPanel.add(new HTML("Rarità: " + cartamagic.getRarity()));
         contentPanel.add(new HTML("Foil: " + cartamagic.hasFoil()));
         contentPanel.add(new HTML("Alternativa: " + cartamagic.isAlternative()));
@@ -191,4 +263,6 @@ public class MagicPage extends Composite {
     		
     	});
     }
+
+
 }
