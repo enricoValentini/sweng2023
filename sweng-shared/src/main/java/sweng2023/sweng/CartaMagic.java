@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class CartaMagic extends Carta implements Serializable{
 	private String artist;
     private String text;
-    private String types;
+    private String type;
     private String rarity;
     private boolean hasFoil;
     private boolean isAlternative;
@@ -25,8 +25,8 @@ public class CartaMagic extends Carta implements Serializable{
         return text;
     }
 
-    public String getTypes() {
-        return types;
+    public String getType() {
+        return type;
     }
 
     public String getRarity() {

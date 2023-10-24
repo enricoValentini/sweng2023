@@ -7,10 +7,31 @@
     <g:HTMLPanel>
         <h1>Magic Cards</h1>
         <g:Button ui:field="homeBtn">Torna alla home</g:Button>
+        <br/><br/><br/>
 
-        <!-- Aggiungi la tua tabella qui -->
-        <g:FlexTable ui:field="cardTable">
-            <!-- ... -->
-        </g:FlexTable>
+
+
+
+
+        <g:Label>Name Filter:</g:Label>
+        <g:TextBox ui:field="nameFilter"></g:TextBox>
+        <br/><br/>
+
+
+        <!-- Rarity Filter -->
+            <g:Label>Rarity Filter:</g:Label>
+            <g:ListBox ui:field="rarityFilter" />
+
+        <!-- Artist Filter -->
+            <g:Label>Artist Filter:</g:Label>
+            <g:ListBox ui:field="artistFilter" />
+        <br/><br/>
+
+
+
+        <g:Button ui:field="searchButton">Search</g:Button>
+        <br/><br/><br/>
+
+        <g:FlexTable ui:field="cardTable"></g:FlexTable>
     </g:HTMLPanel>
 </ui:UiBinder>
