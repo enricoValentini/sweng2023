@@ -10,7 +10,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -55,6 +54,7 @@ public class PokemonPage extends Composite  {
 
     }
     
+    //Torna alla homepage
     @UiHandler("homeBtn")
     void backHome(ClickEvent e) {
     	RootPanel.get().clear();
@@ -62,6 +62,7 @@ public class PokemonPage extends Composite  {
 		RootPanel.get().add(homepage);
     }
 
+    //Effettua la ricerca applicando dei filtri
     @UiHandler("searchButton")
     void onClick(ClickEvent e) {
 
@@ -90,7 +91,6 @@ public class PokemonPage extends Composite  {
                     @Override
                     public void onSuccess(ArrayList<Carta> result) {
                         carte.addAll(result);
-                        //homeBtn.setText("" + result.size());
                         carte = result;
                         updateTable(result,null);
                         uniqueTypes.add("");
@@ -112,6 +112,7 @@ public class PokemonPage extends Composite  {
                 });
     }
 
+    //Popola i listbox 
     private void populateListBox(ListBox listBox, Set<String> items) {
         listBox.clear();
         for (String item : items) {
@@ -119,6 +120,7 @@ public class PokemonPage extends Composite  {
         }
     }
 
+    //Popola la tabella con i risultati della ricerca
     private void updateTable(ArrayList<Carta> carte, FilterPokemon filter) {
         ArrayList<Carta> filtered;
         cardTable.removeAllRows();
@@ -167,6 +169,8 @@ public class PokemonPage extends Composite  {
         }
     }
 
+    //Visualizza il popup dei dettagli e la lista di utenti
+    //che possiedono o desiderano la carta
     private void showDetailsPopup(Carta carta, int clickX, int clickY) {
 
         CartaPokemon cartaPokemon = (CartaPokemon) carta;
@@ -194,7 +198,7 @@ public class PokemonPage extends Composite  {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				//Carica la pagina di aggiunta della carta
+				//Carica la pagina di aggiunta della carta posseduta
 				RootPanel.get().clear();
 				Composite dettagli = new DettagliPage(utente, carta, 3, 0);
 				RootPanel.get().add(dettagli);
@@ -206,7 +210,7 @@ public class PokemonPage extends Composite  {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				//Carica la pagina di aggiunta della carta
+				//Carica la pagina di aggiunta della carta desiderata
 				RootPanel.get().clear();
 				Composite dettagli = new DettagliPage(utente, carta, 3 , 1);
 				RootPanel.get().add(dettagli);
@@ -217,9 +221,7 @@ public class PokemonPage extends Composite  {
         if(this.utente != null) {
         	contentPanel.add(addPossedutaBtn);
         	contentPanel.add(addDesiderataBtn);
-        	//contentPanel.add(labelPosseduta);
         	this.getPossessori(carta, 0, contentPanel);
-        	//contentPanel.add(labelDesiderata);
         	this.getPossessori(carta, 1, contentPanel);
         }
 
@@ -232,6 +234,7 @@ public class PokemonPage extends Composite  {
 
     }
     
+  //Visualizza gli utenti che possiedono o desiderano una carta
     private void getPossessori(Carta carta, int tipo, VerticalPanel panel){
     	greetingService.getPossessori(carta, tipo, 
     			new AsyncCallback<ArrayList<String>>(){

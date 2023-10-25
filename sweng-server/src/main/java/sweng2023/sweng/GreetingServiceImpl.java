@@ -16,6 +16,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		GreetingService {
 
 	@Override
+	//Aggiunge l'utente al db, se non è gia presente
 	public String register(String username, String password) {
 
 		String message = "";
@@ -39,6 +40,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Effettua il login sulla piattaforma
 	public Boolean login(String username, String password) {
 		// TODO Auto-generated method stub
 		Boolean success = false;
@@ -59,6 +61,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Restituisce la lista di carte di un determinato tipo di gioco
 	public ArrayList<Carta> getCarte(String filename, String mapName) {
 		DB db = DBMaker.fileDB(filename).make();
 
@@ -75,6 +78,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Aggiunge una carta alla lista di possedute o desiderate
 	public Boolean addPossedutaDesiderata(String email,Miacarta carta, int tipo) {
 		String dbName;
 		DB db;
@@ -107,6 +111,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Restituisce la lista di carte possedute o desiderate
 	public ArrayList<Miacarta> getPosseduteDesiderate(String email, int tipo) {
 		String dbName;
 		DB db;
@@ -135,6 +140,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Elimina una carta posseduta o desiderata
 	public void deletePossedutaDesiderata(String email, int tipo, int indexOf) {
 		// TODO Auto-generated method stub
 		String dbName;
@@ -161,6 +167,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Aggiorna i dettagli di una carta posseduta o desiderata
 	public Boolean updatePossedutaDesiderata(String email, int tipo, int indexOf, Miacarta updatedCarta) {
 		// TODO Auto-generated method stub
 		String dbName;
@@ -190,6 +197,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Restituisce gli utenti che possiedono o desiderano una certa carta
 	public ArrayList<String> getPossessori(Carta carta, int tipo) {
 		String dbName;
 		DB db;
@@ -226,6 +234,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Restituisce una lista di utenti 
 	public ArrayList<String> getUtenti() {
 		DB db = DBMaker.fileDB("utenti.db").make();
 
@@ -245,6 +254,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Invia una proposta di scambio ad un altro utente
 	public Boolean proponiScambio(Scambio scambio, String emailMittente) {
 		DB db = DBMaker.fileDB("scambi.db").make();
 
@@ -271,6 +281,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	//Restituisce dutti gli scambi ricevuti per un certo utente
 	public ArrayList<Scambio> getScambi(String email) {
 		DB db = DBMaker.fileDB("scambi.db").make();
 
@@ -322,6 +333,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		return success;
 	}
 	
+	//Scambia i proprietari delle carte
 	private boolean scambiaProprietari(String mittente, String destinatario, String daCedere, String daRicevere) {
 		DB db = DBMaker.fileDB("possedute.db").make();
 		Boolean success = false;
@@ -359,5 +371,71 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		
 		return success;
 		
+	}
+
+	@Override
+	//restituisce la lista di deck
+	public ArrayList<Deck> getDecks(String email) {
+		DB db = DBMaker.fileDB("deck.db").make();
+		
+		HTreeMap<String, List<Deck>> deck = db.hashMap("deck")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		ArrayList<Deck> mieiDeck = new ArrayList<Deck>();
+		
+		if (deck.get(email) != null) {
+			mieiDeck.addAll(deck.get(email));
+		}
+		
+		db.close();
+		
+		return mieiDeck;
+	}
+
+	@Override
+	//Aggiunge un deck alla lista dei deck
+	public Boolean addDeck(String email, Deck deck) {
+		DB db = DBMaker.fileDB("deck.db").make();
+		
+		HTreeMap<String, List<Deck>> decks = db.hashMap("deck")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		List<Deck> mieiDeck = null;
+		if (decks.get(email) == null) {
+			mieiDeck = new ArrayList<Deck>();
+			mieiDeck.add(deck);
+			decks.put(email, mieiDeck);
+			System.out.println("Added new");
+		}else {
+			mieiDeck= decks.get(email);
+			mieiDeck.add(deck);
+			decks.put(email, mieiDeck);
+			System.out.println("Added other");
+		}
+		
+		db.close();
+		return true;
+	}
+
+	@Override
+	public Boolean deleteDeck(String email, int indexOf) {
+		DB db = DBMaker.fileDB("deck.db").make();
+		
+		HTreeMap<String, List<Deck>> decks = db.hashMap("deck")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		List<Deck> mieiDeck = decks.get(email);
+		mieiDeck.remove(indexOf);
+		decks.put(email, mieiDeck);
+		
+		db.close();
+		
+		return true;
 	}
 }

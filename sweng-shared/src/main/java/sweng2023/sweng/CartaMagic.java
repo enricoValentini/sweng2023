@@ -3,6 +3,10 @@ package sweng2023.sweng;
 import java.io.Serializable;
 
 public class CartaMagic extends Carta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String artist;
     private String text;
     private String type;

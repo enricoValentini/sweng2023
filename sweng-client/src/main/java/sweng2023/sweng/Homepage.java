@@ -1,13 +1,10 @@
 package sweng2023.sweng;
 
-import java.util.ArrayList;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -51,6 +48,7 @@ public class Homepage extends Composite {
 
 	}
 	
+	//Visualizza la pagina di login
 	@UiHandler("loginBtn")
 	void loadLogin(ClickEvent e) {
 		RootPanel.get().clear();
@@ -58,6 +56,7 @@ public class Homepage extends Composite {
 		RootPanel.get().add(login);
 	}
 	
+	//Esegue il logout
 	@UiHandler("logoutBtn")
 	void doLogout(ClickEvent e) {
 		RootPanel.get().clear();
@@ -65,6 +64,7 @@ public class Homepage extends Composite {
 		RootPanel.get().add(homepage);
 	}
 
+	//Visualizza la pagina delle carte di Yugioh
 	@UiHandler("yugiohBtn")
 	void yugioh(ClickEvent e) {
 		RootPanel.get().clear();
@@ -72,6 +72,7 @@ public class Homepage extends Composite {
 		RootPanel.get().add(yugioh);
 	}
 
+	//Visualizza la pagina delle carte di Pokemon
 	@UiHandler("PokemonBtn")
 	void pokemon(ClickEvent e) {
 		RootPanel.get().clear();
@@ -79,6 +80,7 @@ public class Homepage extends Composite {
 		RootPanel.get().add(pokemon);
 	}
 
+	//Visualizza la pagina delle carte di MTG
 	@UiHandler("magicBtn")
 	void magic(ClickEvent e) {
 		RootPanel.get().clear();
@@ -86,6 +88,7 @@ public class Homepage extends Composite {
 		RootPanel.get().add(magic);
 	}
 
+	//Visualizza il profilo personale dell'utente loggato
 	@UiHandler("profileBtn")
 	void openProfile(ClickEvent e) {
 		RootPanel.get().clear();

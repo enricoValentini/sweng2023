@@ -1,6 +1,5 @@
 package sweng2023.sweng;
 
-import java.util.List;
 
 public class FilterMagic extends CardFilter {
 

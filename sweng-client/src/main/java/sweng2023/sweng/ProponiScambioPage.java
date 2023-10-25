@@ -61,7 +61,7 @@ public class ProponiScambioPage extends Composite {
 	
 	@Override
 	public void onLoad() {
-		//restituisci le carte possedute
+		//restituisce le carte possedute
 		greetingService.getPosseduteDesiderate(this.utente.getEmail(), 0,
                 new AsyncCallback<ArrayList<Miacarta>>() {
 
@@ -121,6 +121,7 @@ public class ProponiScambioPage extends Composite {
             });
 	}
 	
+	//Visualizza le carte desiderate dall'utente
 	private void popolaTableCarteDesiderate(ArrayList<Miacarta> result) {
 		desiderataTable.setText(0, 0, "Nome");
 		desiderataTable.setText(0, 1, "Descrizione");
@@ -162,6 +163,7 @@ public class ProponiScambioPage extends Composite {
 		}
 	}
 	
+	//Visualizza le carte possedute dall'utente
 	private void popolaTableCartePossedute(ArrayList<Miacarta> result) {
 		possedutaTable.setText(0, 0, "Nome");
 		possedutaTable.setText(0, 1, "Descrizione");

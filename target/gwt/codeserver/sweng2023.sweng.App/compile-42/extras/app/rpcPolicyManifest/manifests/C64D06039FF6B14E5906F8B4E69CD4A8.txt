@@ -1,0 +1,2 @@
+serviceClass: sweng2023.sweng.GreetingService
+path: 2B9619E222788EA9DB0CCDA8C56AE824.gwt.rpc

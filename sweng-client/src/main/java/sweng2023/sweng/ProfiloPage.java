@@ -7,7 +7,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -24,6 +23,8 @@ public class ProfiloPage extends Composite {
 	Button posseduteBtn;
 	@UiField
 	Button desiderateBtn;
+	@UiField
+	Button deckBtn;
 	
 	Utente utente;
 
@@ -41,7 +42,7 @@ public class ProfiloPage extends Composite {
 	}
 	
 	@UiHandler("posseduteBtn")
-	//Apri la lista di carte possedute
+	//Visualizza la lista di carte possedute
 	void goToPossedute(ClickEvent e) {
 		RootPanel.get().clear();
 		Composite posseduteDesiderate = new PosseduteDesideratePage(this.utente, 0);
@@ -49,7 +50,7 @@ public class ProfiloPage extends Composite {
 	}
 	
 	@UiHandler("desiderateBtn")
-	//Apri la lista di carte possedute
+	//Visualizza la lista di carte desiderate
 	void goToDesiderate(ClickEvent e) {
 		RootPanel.get().clear();
 		Composite posseduteDesiderate = new PosseduteDesideratePage(this.utente, 1);
@@ -57,11 +58,19 @@ public class ProfiloPage extends Composite {
 	}
 	
 	@UiHandler("scambiBtn")
-	//Apri la lista di carte possedute
+	//Visualizza pagina degli scambi
 	void goToScambi(ClickEvent e) {
 		RootPanel.get().clear();
 		Composite scambi = new ScambiPage(this.utente);
 		RootPanel.get().add(scambi);
+	}
+	
+	@UiHandler("deckBtn")
+	//Visualizza la lista dei deck dell'utente
+	void goToDeck(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite deck = new DeckPage(this.utente);
+		RootPanel.get().add(deck);
 	}
 
 }

@@ -21,4 +21,7 @@ public interface GreetingServiceAsync {
 	void proponiScambio(Scambio scambio, String emailMittente, AsyncCallback<Boolean> callback);
 	void getScambi(String email, AsyncCallback<ArrayList<Scambio>> callback);
 	void scambiaCarte(String email, Boolean accepted, int indexOf, AsyncCallback<Boolean> callback);
+	void getDecks(String email, AsyncCallback<ArrayList<Deck>> callback);
+	void addDeck(String email, Deck deck, AsyncCallback<Boolean> callback);
+	void deleteDeck(String email, int indexOf, AsyncCallback<Boolean> callback);
 }

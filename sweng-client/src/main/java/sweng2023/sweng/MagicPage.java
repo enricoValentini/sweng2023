@@ -62,6 +62,7 @@ public class MagicPage extends Composite {
 
     }
     
+    //Torna alla homepage
     @UiHandler("homeBtn")
     void backHome(ClickEvent e) {
     	RootPanel.get().clear();
@@ -69,17 +70,18 @@ public class MagicPage extends Composite {
 		RootPanel.get().add(homepage);
     }
 
+    //Applica il filtro per la ricerca delle carte
     @UiHandler("searchButton")
     void onClick(ClickEvent e) {
 
-        // Crea e applica il filtro
+        //Crea e applica il filtro
         FilterMagic filter = new FilterMagic();
         filter.setName(nameFilter.getValue());
         filter.setArtist(artistFilter.getSelectedValue());
         filter.setRarity(rarityFilter.getSelectedValue());
 
 
-        // Chiamare il metodo che gestisce l'aggiornamento della tabella
+        // Chiama il metodo che gestisce l'aggiornamento della tabella
         updateTable(carte, filter);
     }
 
@@ -123,6 +125,7 @@ public class MagicPage extends Composite {
         }
     }
 
+    //Popola la tabella con i risultati della ricerca
     private void updateTable(ArrayList<Carta> carte,  FilterMagic filter ) {
         ArrayList<Carta> filtered;
         cardTable.removeAllRows();
@@ -172,6 +175,8 @@ public class MagicPage extends Composite {
         }
     }
 
+    //Visualizza il popup che mostra i dettagli della carta
+    //e gli utenti che desiderano o pessiodono la carta
     private void showDetailsPopup(Carta carta, int clickX, int clickY) {
 
         CartaMagic cartamagic = (CartaMagic) carta;
@@ -201,7 +206,7 @@ public class MagicPage extends Composite {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				//Carica la pagina di aggiunta della carta
+				//Carica la pagina di aggiunta della carta posseduta
 				RootPanel.get().clear();
 				Composite dettagli = new DettagliPage(utente, carta, 2, 0);
 				RootPanel.get().add(dettagli);
@@ -213,7 +218,7 @@ public class MagicPage extends Composite {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				//Carica la pagina di aggiunta della carta
+				//Carica la pagina di aggiunta della carta desiderata
 				RootPanel.get().clear();
 				Composite dettagli = new DettagliPage(utente, carta, 2 , 1);
 				RootPanel.get().add(dettagli);
@@ -224,9 +229,7 @@ public class MagicPage extends Composite {
         if(this.utente != null) {
         	contentPanel.add(addPossedutaBtn);
         	contentPanel.add(addDesiderataBtn);
-        	//contentPanel.add(labelPosseduta);
         	this.getPossessori(carta, 0, contentPanel);
-        	//contentPanel.add(labelDesiderata);
         	this.getPossessori(carta, 1, contentPanel);
         }
 
@@ -241,6 +244,7 @@ public class MagicPage extends Composite {
 
     }
     
+    //Visualizza gli utenti che possiedono o desiderano una carta
     private void getPossessori(Carta carta, int tipo, VerticalPanel panel){
     	greetingService.getPossessori(carta, tipo, 
     			new AsyncCallback<ArrayList<String>>(){

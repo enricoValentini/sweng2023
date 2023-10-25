@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -55,11 +54,13 @@ public class UpdatePage extends Composite {
 	}
 	
 	@Override
+	//Ppopola i campi con i dati della carta
 	public void onLoad() {
 		this.descBox.setText(this.carta.descrizione);
 		this.statoBox.setItemSelected(this.carta.stato - 1, true);
 	}
 	
+	//Recupera i nuovi dati inseriti e aggiorna il DB
 	@UiHandler("updateBtn")
 	void updateCarta(ClickEvent e) {
 		String selectedValue = statoBox.getSelectedValue();
@@ -86,6 +87,7 @@ public class UpdatePage extends Composite {
                 });
 	}
 	
+	//Torna alle carte possedute o desiderate
 	@UiHandler("backBtn")
 	void backtoCards(ClickEvent e){
 		RootPanel.get().clear();
