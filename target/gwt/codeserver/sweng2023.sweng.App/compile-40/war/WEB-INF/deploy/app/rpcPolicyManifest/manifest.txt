@@ -1,0 +1,15 @@
+# Module app
+# RPC service class, partial path of RPC policy file
+sweng2023.sweng.GreetingService, 35CD2282980DE65545D75A3CE6CC79F2.gwt.rpc
+sweng2023.sweng.GreetingService, D95C9DE1F6E7D3E9F431EF12CED35FD8.gwt.rpc
+sweng2023.sweng.GreetingService, 09FCDB7BA4529773D0EEA775E46EC74C.gwt.rpc
+sweng2023.sweng.GreetingService, AAB60B5BB6A3BCE9D6FEFAD65A9BAC9B.gwt.rpc
+sweng2023.sweng.GreetingService, A7E7B713BBACBFE2CA5F4D17731C7A54.gwt.rpc
+sweng2023.sweng.GreetingService, AFE269D8F1B9BD9424D21B9D105BFD68.gwt.rpc
+sweng2023.sweng.GreetingService, 087F632B3AAB0228322A0AB33C677E03.gwt.rpc
+sweng2023.sweng.GreetingService, 752A36186DE61D12E90BB387FA0F6D2D.gwt.rpc
+sweng2023.sweng.GreetingService, AB4B02FDCF70EAFA2DC37ECF5CDF7D0C.gwt.rpc
+sweng2023.sweng.GreetingService, 2B9619E222788EA9DB0CCDA8C56AE824.gwt.rpc
+sweng2023.sweng.GreetingService, 9C00B5480701FB753178E966C6AA2D49.gwt.rpc
+sweng2023.sweng.GreetingService, 60F4D4CF28ACF0A015EA4C93354781DD.gwt.rpc
+sweng2023.sweng.GreetingService, 1D440C046C8B08EDD1AE77DF644B865B.gwt.rpc

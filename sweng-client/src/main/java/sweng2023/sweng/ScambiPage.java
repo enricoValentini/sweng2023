@@ -42,6 +42,7 @@ public class ScambiPage extends Composite {
 	}
 	
 	@Override
+	//Visualizza tutti gli scambi ricevuti dall'utente 
 	public void onLoad() {
 		greetingService.getScambi(this.utente.getEmail(),
                 new AsyncCallback<ArrayList<Scambio>>() {
@@ -75,6 +76,7 @@ public class ScambiPage extends Composite {
 							accept.addClickHandler(new ClickHandler() {
 
 								@Override
+								//Scambio accettato
 								public void onClick(ClickEvent event) {
 									aggiornaScambi(true, result.indexOf(scambio));
 								}
@@ -84,6 +86,7 @@ public class ScambiPage extends Composite {
 							refuse.addClickHandler(new ClickHandler() {
 
 								@Override
+								//Scambio rifiutato
 								public void onClick(ClickEvent event) {
 									aggiornaScambi(false, result.indexOf(scambio));
 								}

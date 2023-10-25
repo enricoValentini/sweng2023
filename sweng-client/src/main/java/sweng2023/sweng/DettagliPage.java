@@ -53,6 +53,8 @@ public class DettagliPage extends Composite {
 		this.tipo = tipo;
 	}
 	
+	//Recupera il contenuto dei campi e aggiunga una carta alla lista
+	//di possedute o desiderate
 	@UiHandler("addBtn")
 	void addCarta(ClickEvent e){
 		String selectedValue = statoBox.getSelectedValue();
@@ -74,6 +76,7 @@ public class DettagliPage extends Composite {
 		});
 	}
 	
+	//Torna alla visualizzazione di carte di un determinato gioco
 	@UiHandler("backBtn")
 	void backToListing(ClickEvent e) {
 		RootPanel.get().clear();

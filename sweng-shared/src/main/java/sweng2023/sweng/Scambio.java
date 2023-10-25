@@ -3,6 +3,10 @@ package sweng2023.sweng;
 import java.io.Serializable;
 
 public class Scambio implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Miacarta daCedere;
 	private Miacarta daRicevere;
 	private String mittente;

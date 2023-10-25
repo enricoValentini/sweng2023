@@ -1,8 +1,6 @@
 package sweng2023.sweng;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Console;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -15,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.jetty.util.Promise;
 
 public class YugiohPage extends Composite  {
 
@@ -58,6 +55,7 @@ public class YugiohPage extends Composite  {
 
     }
 
+    //Torna alla homepage
     @UiHandler("homeBtn")
     void backHome(ClickEvent e) {
         RootPanel.get().clear();
@@ -65,6 +63,7 @@ public class YugiohPage extends Composite  {
         RootPanel.get().add(homepage);
     }
 
+    //Ricerca applicando i filtri
     @UiHandler("searchButton")
     void onClick(ClickEvent e) {
 
@@ -75,12 +74,13 @@ public class YugiohPage extends Composite  {
         filter.setType(typeFilter.getSelectedValue());
         filter.setRace(raceFilter.getSelectedValue());
 
-        // Chiamare il metodo che gestisce l'aggiornamento della tabella
+        // Chiama il metodo che gestisce l'aggiornamento della tabella
         updateTable(carte, filter);
 
     }
 
     @Override
+    //Popola la tabella
     public void onLoad() {
         greetingService.getCarte("yugioh.db", "yugioh",
                 new AsyncCallback<ArrayList<Carta>>() {
@@ -111,6 +111,7 @@ public class YugiohPage extends Composite  {
                 });
     }
 
+    //Popola il listbox contenente i filtri
     private void populateListBox(ListBox listBox, Set<String> items) {
         listBox.clear();
         for (String item : items) {
@@ -118,6 +119,7 @@ public class YugiohPage extends Composite  {
         }
     }
 
+    //Popola la tabella con i risultati della ricerca
     private void updateTable(ArrayList<Carta> carte, FilterYugioh filter) {
         ArrayList<Carta> filtered;
         cardTable.removeAllRows();
@@ -169,6 +171,8 @@ public class YugiohPage extends Composite  {
         }
     }
 
+    //Visualizza un popup per visualizzare i dettagli
+    //e gli utenti che possiedono o desiderano la carta
     private void showDetailsPopup(Carta carta, int clickX, int clickY) {
         PopupPanel detailsPopup = new PopupPanel(true);
         CartaYugioh cartayugioh = (CartaYugioh) carta;
@@ -184,8 +188,6 @@ public class YugiohPage extends Composite  {
         Button closeButton = new Button("Chiudi");
         Button addPossedutaBtn = new Button("Aggiungi posseduta");
         Button addDesiderataBtn = new Button("Aggiungi desiderata");
-        Label labelPosseduta = new Label("Utenti che possiedono la carta");
-        Label labelDesiderata = new Label("Utenti che desiderano la carta");
         closeButton.addClickHandler(event -> detailsPopup.hide());
         
         contentPanel.add(closeButton);
@@ -194,7 +196,7 @@ public class YugiohPage extends Composite  {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				//Carica la pagina di aggiunta della carta
+				//Visualizza la pagina di aggiunta della carta posseduta
 				RootPanel.get().clear();
 				Composite dettagli = new DettagliPage(utente, carta, 1, 0);
 				RootPanel.get().add(dettagli);
@@ -206,7 +208,7 @@ public class YugiohPage extends Composite  {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				//Carica la pagina di aggiunta della carta
+				//Visualizza la pagina di aggiunta della carta desiderata
 				RootPanel.get().clear();
 				Composite dettagli = new DettagliPage(utente, carta, 1 , 1);
 				RootPanel.get().add(dettagli);
@@ -218,9 +220,7 @@ public class YugiohPage extends Composite  {
         if(this.utente != null) {
         	contentPanel.add(addPossedutaBtn);
         	contentPanel.add(addDesiderataBtn);
-        	//contentPanel.add(labelPosseduta);
         	this.getPossessori(carta, 0, contentPanel);
-        	//contentPanel.add(labelDesiderata);
         	this.getPossessori(carta, 1, contentPanel);
         }
 
@@ -231,6 +231,7 @@ public class YugiohPage extends Composite  {
         detailsPopup.show();
     }
     
+    //Restituisce gli utenti che possiedono o desiderano la carta
     private void getPossessori(Carta carta, int tipo, VerticalPanel panel){
     	greetingService.getPossessori(carta, tipo, 
     			new AsyncCallback<ArrayList<String>>(){

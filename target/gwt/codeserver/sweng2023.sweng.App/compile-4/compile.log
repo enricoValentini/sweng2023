@@ -1,0 +1,7 @@
+binding: user.agent=safari
+Compiling module sweng2023.sweng.App
+   Tracing compile failure path for type 'sweng2023.sweng.ScambiPage'
+      [ERROR] Errors in 'file:/C:/Users/Admin/Desktop/progetto_sweng/sweng2023/sweng-client/src/main/java/sweng2023/sweng/ScambiPage.java'
+         [ERROR] Line 93: Syntax error on token "if", delete this token
+   [ERROR] Aborting compile due to errors in some input files
+[ERROR] Compiler returned false

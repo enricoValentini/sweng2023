@@ -1,0 +1,13 @@
+binding: user.agent=safari
+Compiling module sweng2023.sweng.App
+   Unification traversed 2041 fields and methods and 776 types. 72 are considered part of the current module and 82 had all of their fields and methods traversed.
+   Compiling 1 permutation
+      Compiling permutation 0...
+      Linking per-type JS with 72 new/changed types.
+      Source Maps Enabled
+   Compile of permutations succeeded
+   Compilation succeeded -- 2,981s
+Linking into C:\Users\Admin\Desktop\progetto_sweng\sweng2023\target\gwt\codeserver\sweng2023.sweng.App\compile-28\war\app; Writing extras to C:\Users\Admin\Desktop\progetto_sweng\sweng2023\target\gwt\codeserver\sweng2023.sweng.App\compile-28\extras\app
+   Link succeeded
+   Linking succeeded -- 0,299s
+3,395s total -- Compile completed

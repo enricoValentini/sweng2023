@@ -1,8 +1,5 @@
 package sweng2023.sweng;
 
-import java.lang.reflect.Array;
-import java.util.Collections;
-import java.util.List;
 
 public class FilterPokemon extends CardFilter{
     protected String types; // Modifica il tipo del campo "types" a List<String>

@@ -46,8 +46,8 @@ public class Login extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
+	//Effettua il login
 	@UiHandler("loginBtn")
-	//Chiama il service che si occupa del login
 	void doLogin(ClickEvent e) {
 		String email = emailBox.getText();
 		String password = passwordBox.getText();
@@ -70,6 +70,7 @@ public class Login extends Composite {
 		
 	}
 	
+	//Visualizza la pagina di registrazione
 	@UiHandler("registerBtn")
 	//Carica la pagina di registrazione
 	void openRegister(ClickEvent e) {

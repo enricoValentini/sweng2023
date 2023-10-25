@@ -13,7 +13,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -45,6 +44,7 @@ public class PosseduteDesideratePage extends Composite {
 	}
 	
 	@Override
+	//Popola la tabella delle carte
 	public void onLoad() {		
 		if (this.tipo == 0)
 			this.myHeader.setInnerText("Carte possedute");
@@ -93,6 +93,7 @@ public class PosseduteDesideratePage extends Composite {
 							deleteCard.addClickHandler(new ClickHandler() {
 
 								@Override
+								//Elimina la carta
 								public void onClick(ClickEvent event) {
 									callDelete(result.indexOf(carta));
 								}
@@ -102,6 +103,7 @@ public class PosseduteDesideratePage extends Composite {
 							updateCard.addClickHandler(new ClickHandler() {
 
 								@Override
+								//Visualizza la pagina di modifica della carta
 								public void onClick(ClickEvent event) {
 									RootPanel.get().clear();
 									Composite update = new UpdatePage(utente, carta, tipo, result);
@@ -120,6 +122,7 @@ public class PosseduteDesideratePage extends Composite {
 		
 	}
 	
+	//Invoca il service che si occupa di eliminare la carta
 	private void callDelete(int indexOf) {
 		greetingService.deletePossedutaDesiderata(utente.getEmail(), this.tipo, indexOf,
                 new AsyncCallback<Void>() {

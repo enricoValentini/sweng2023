@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<h1>Crea un deck</h1>
+		<g:Button ui:field="decksBtn">Torna ai deck</g:Button>
+		<g:Label ui:field="nomeLabel">Nome del deck</g:Label>
+		<g:TextBox ui:field="nomeBox"></g:TextBox>
+		<g:FlexTable ui:field="cardTable"></g:FlexTable>
+		<g:Button ui:field="createBtn">Crea deck</g:Button>
+		<g:Label ui:field="errorLabel"></g:Label>
+	</g:HTMLPanel>
+</ui:UiBinder> 

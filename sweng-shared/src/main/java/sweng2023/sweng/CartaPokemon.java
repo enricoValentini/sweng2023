@@ -4,8 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 public class CartaPokemon extends Carta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String illustrator;
-    private String image;
+    @SuppressWarnings("unused")
+	private String image;
     private String rarity;
     private Varianti variants; // Include the CardAttributes object
     private List<String> types;
