@@ -268,12 +268,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 			mieiScambi = new ArrayList<Scambio>();
 			mieiScambi.add(scambio);
 			scambi.put(emailMittente, mieiScambi);
-			System.out.println("Added new");
 		}else {
 			mieiScambi = scambi.get(emailMittente);
 			mieiScambi.add(scambio);
 			scambi.put(emailMittente, mieiScambi);
-			System.out.println("Added other");
 		}
 		
 		db.close();
@@ -409,12 +407,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 			mieiDeck = new ArrayList<Deck>();
 			mieiDeck.add(deck);
 			decks.put(email, mieiDeck);
-			System.out.println("Added new");
 		}else {
 			mieiDeck= decks.get(email);
 			mieiDeck.add(deck);
 			decks.put(email, mieiDeck);
-			System.out.println("Added other");
 		}
 		
 		db.close();
