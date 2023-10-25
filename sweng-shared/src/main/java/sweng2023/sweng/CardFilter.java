@@ -1,6 +1,6 @@
 package sweng2023.sweng;
 
-public class CardFilter {
+public abstract class CardFilter {
 
     protected String name;
     protected String type;
@@ -30,5 +30,7 @@ public class CardFilter {
     public void setType(String type) {
         this.type = type;
     }
+    
+    public abstract boolean passesFilter(Carta carta);
 
 }

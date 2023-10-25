@@ -79,13 +79,13 @@ public class CartaMagic_FieldSerializer implements com.google.gwt.user.client.rp
     instance.@sweng2023.sweng.CartaMagic::text = value;
   }-*/;
   
-  private static native java.lang.String getTypes(sweng2023.sweng.CartaMagic instance) /*-{
-    return instance.@sweng2023.sweng.CartaMagic::types;
+  private static native java.lang.String getType(sweng2023.sweng.CartaMagic instance) /*-{
+    return instance.@sweng2023.sweng.CartaMagic::type;
   }-*/;
   
-  private static native void setTypes(sweng2023.sweng.CartaMagic instance, java.lang.String value) 
+  private static native void setType(sweng2023.sweng.CartaMagic instance, java.lang.String value) 
   /*-{
-    instance.@sweng2023.sweng.CartaMagic::types = value;
+    instance.@sweng2023.sweng.CartaMagic::type = value;
   }-*/;
   
   public static void deserialize(SerializationStreamReader streamReader, sweng2023.sweng.CartaMagic instance) throws SerializationException {
@@ -97,7 +97,7 @@ public class CartaMagic_FieldSerializer implements com.google.gwt.user.client.rp
     setIsReprint(instance, streamReader.readBoolean());
     setRarity(instance, streamReader.readString());
     setText(instance, streamReader.readString());
-    setTypes(instance, streamReader.readString());
+    setType(instance, streamReader.readString());
     
     sweng2023.sweng.Carta_FieldSerializer.deserialize(streamReader, instance);
   }
@@ -115,7 +115,7 @@ public class CartaMagic_FieldSerializer implements com.google.gwt.user.client.rp
     streamWriter.writeBoolean(getIsReprint(instance));
     streamWriter.writeString(getRarity(instance));
     streamWriter.writeString(getText(instance));
-    streamWriter.writeString(getTypes(instance));
+    streamWriter.writeString(getType(instance));
     
     sweng2023.sweng.Carta_FieldSerializer.serialize(streamWriter, instance);
   }

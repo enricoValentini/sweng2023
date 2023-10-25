@@ -11,7 +11,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("greet")
 public interface GreetingService extends RemoteService {
-	GreetingResponse greetServer(String name) throws IllegalArgumentException;
+	//GreetingResponse greetServer(String name) throws IllegalArgumentException;
 	String register(String username, String password);
 	Boolean login(String username, String password);
 	ArrayList<Carta> getCarte(String filename, String mapName);
@@ -21,4 +21,8 @@ public interface GreetingService extends RemoteService {
 	void deletePossedutaDesiderata(String email, int tipo, int indexOf);
 	Boolean updatePossedutaDesiderata(String email, int tipo, int indexOf, Miacarta updatedCarta);
 	ArrayList<String> getPossessori(Carta carta, int tipo);
+	ArrayList<String> getUtenti();
+	Boolean proponiScambio(Scambio scambio, String emailMittente);
+	ArrayList<Scambio> getScambi(String email);
+	Boolean scambiaCarte(String email, Boolean accepted, int indexOf);
 }

@@ -55,5 +55,13 @@ public class ProfiloPage extends Composite {
 		Composite posseduteDesiderate = new PosseduteDesideratePage(this.utente, 1);
 		RootPanel.get().add(posseduteDesiderate);
 	}
+	
+	@UiHandler("scambiBtn")
+	//Apri la lista di carte possedute
+	void goToScambi(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite scambi = new ScambiPage(this.utente);
+		RootPanel.get().add(scambi);
+	}
 
 }

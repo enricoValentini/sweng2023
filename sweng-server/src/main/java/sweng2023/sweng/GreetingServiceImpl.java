@@ -15,25 +15,6 @@ import org.mapdb.*;
 public class GreetingServiceImpl extends RemoteServiceServlet implements
 		GreetingService {
 
-	public GreetingResponse greetServer(String input) throws IllegalArgumentException {
-		// Verify that the input is valid.
-		if (!FieldVerifier.isValidName(input)) {
-			// If the input is not valid, throw an IllegalArgumentException back to
-			// the client.
-			throw new IllegalArgumentException(
-					"Name must be at least 4 characters long");
-		}
-
-		GreetingResponse response = new GreetingResponse();
-
-		response.setServerInfo(getServletContext().getServerInfo());
-		response.setUserAgent(getThreadLocalRequest().getHeader("User-Agent"));
-
-		response.setGreeting("Hello, test!");
-
-		return response;
-	}
-
 	@Override
 	public String register(String username, String password) {
 
@@ -86,8 +67,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 				.valueSerializer(Serializer.JAVA)
 				.createOrOpen();
 
-		System.out.println("Debug DB "  + carteMap.size());
-
 		ArrayList<Carta> carte = new ArrayList<>();
 		carte.addAll(carteMap.values());
 
@@ -122,8 +101,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 			mieCarte.add(carta);
 			carte.put(email, mieCarte);
 		}
-		
-		//System.out.println("Le carte sono ora " + carte.get(email).size());
 		
 		db.close();
 		return true;
@@ -177,9 +154,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 				.createOrOpen();
 		
 		List<Miacarta> mieCarte = carte.get(email);
-		System.out.println(mieCarte.size());
 		mieCarte.remove(indexOf);
-		System.out.println(mieCarte.size());
 		carte.put(email, mieCarte);
 		
 		db.close();
@@ -238,7 +213,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
             List<Miacarta> value = entry.getValue();
             for (Miacarta miaCarta : value) {
             	if (miaCarta.carta.name.equals(carta.name)) {
-            		System.out.println(key);
             		possessori.add(key);
             		break;
             	}
@@ -249,5 +223,141 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		db.close();
 
 		return possessori;
+	}
+
+	@Override
+	public ArrayList<String> getUtenti() {
+		DB db = DBMaker.fileDB("utenti.db").make();
+
+		HTreeMap<String, String> utenti = db.hashMap("utenti")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.STRING)
+				.createOrOpen();
+		
+		ArrayList<String> allUsers = new ArrayList<String>();
+		for (Entry<String, String> entry : utenti.entrySet()) {
+			allUsers.add(entry.getKey());
+		}
+		
+		db.close();
+		
+		return allUsers;
+	}
+
+	@Override
+	public Boolean proponiScambio(Scambio scambio, String emailMittente) {
+		DB db = DBMaker.fileDB("scambi.db").make();
+
+		HTreeMap<String, List<Scambio>> scambi = db.hashMap("scambi")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		List<Scambio> mieiScambi = null;
+		if (scambi.get(emailMittente) == null) {
+			mieiScambi = new ArrayList<Scambio>();
+			mieiScambi.add(scambio);
+			scambi.put(emailMittente, mieiScambi);
+			System.out.println("Added new");
+		}else {
+			mieiScambi = scambi.get(emailMittente);
+			mieiScambi.add(scambio);
+			scambi.put(emailMittente, mieiScambi);
+			System.out.println("Added other");
+		}
+		
+		db.close();
+		return true;
+	}
+
+	@Override
+	public ArrayList<Scambio> getScambi(String email) {
+		DB db = DBMaker.fileDB("scambi.db").make();
+
+		HTreeMap<String, List<Scambio>> scambi = db.hashMap("scambi")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		ArrayList<Scambio> mieiScambi = new ArrayList<Scambio>();
+		
+		if (scambi.get(email) != null)
+			mieiScambi.addAll(scambi.get(email));
+		
+		db.close();
+		
+		return mieiScambi;
+	}
+
+	@Override
+	//Gestisce lo scambio delle carte
+	public Boolean scambiaCarte(String email, Boolean accepted, int indexOf) {
+		DB db = DBMaker.fileDB("scambi.db").make();
+		Boolean success = true;
+		
+		HTreeMap<String, List<Scambio>> scambi = db.hashMap("scambi")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		List<Scambio> mieiScambi = scambi.get(email);
+		Scambio scambio = mieiScambi.get(indexOf);
+		
+		if (accepted) {
+			success = scambiaProprietari(scambio.getMittente(), email, 
+					scambio.getDaRicevere().carta.name, scambio.getDaCedere().carta.name);
+			
+			if (success) {
+				mieiScambi.remove(indexOf);
+				scambi.put(email, mieiScambi);
+			}
+			
+		}else {
+			mieiScambi.remove(indexOf);
+			scambi.put(email, mieiScambi);
+		}
+		
+		db.close();
+		
+		return success;
+	}
+	
+	private boolean scambiaProprietari(String mittente, String destinatario, String daCedere, String daRicevere) {
+		DB db = DBMaker.fileDB("possedute.db").make();
+		Boolean success = false;
+		
+		HTreeMap<String, List<Miacarta>> carte = db.hashMap("possedute")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		List<Miacarta> posseduteDestinatario = carte.get(destinatario);
+		List<Miacarta> posseduteMittente = carte.get(mittente);
+		Miacarta cartaCeduta = null;
+		
+		if (posseduteDestinatario != null) {
+			for (Miacarta carta : posseduteDestinatario) {
+				if (carta.carta.name.equals(daCedere)) {
+					// Create a copy of 'posseduteDestinatario' without the item to remove
+			        List<Miacarta> newPosseduteDestinatario = new ArrayList<Miacarta>(posseduteDestinatario);
+			        newPosseduteDestinatario.remove(carta);
+
+			        // Update the 'carte' map for the 'mittente' key
+			        posseduteMittente.add(carta);
+
+			        // Update the 'carte' map with the modified lists
+			        carte.put(destinatario, newPosseduteDestinatario);
+			        carte.put(mittente, posseduteMittente);
+
+			        success = true;
+			        break;
+				}
+			}
+		}
+		
+		db.close();
+		
+		return success;
+		
 	}
 }

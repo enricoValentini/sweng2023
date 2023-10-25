@@ -8,5 +8,6 @@
 		<g:Button ui:field="homeBtn">Torna alla homepage</g:Button>
 		<g:Button ui:field="posseduteBtn">Carte possedute</g:Button>
 		<g:Button ui:field="desiderateBtn">Carte desiderate</g:Button>
+		<g:Button ui:field="scambiBtn">Scambia carte</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 
