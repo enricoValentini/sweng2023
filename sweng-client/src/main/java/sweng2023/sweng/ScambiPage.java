@@ -61,6 +61,7 @@ public class ScambiPage extends Composite {
 							scambiTable.setText(0, 1, "Carta da ricevere");
 							scambiTable.setText(0, 2, "Accetta");
 							scambiTable.setText(0, 3, "Rifiuta");
+							scambiTable.setText(0,4, "Condizione minima");
 						}else {
 							errorLabel.setText("Nessuno scambio ancora proposto");
 						}
@@ -95,6 +96,7 @@ public class ScambiPage extends Composite {
 							
 							scambiTable.setWidget(i, 2, accept);
 							scambiTable.setWidget(i, 3, refuse);
+							scambiTable.setText(i, 4, result.get(i - 1).getDaRicevere().stato + "");
 						}
 						
 						

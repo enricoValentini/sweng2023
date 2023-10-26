@@ -314,7 +314,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		
 		if (accepted) {
 			success = scambiaProprietari(scambio.getMittente(), email, 
-					scambio.getDaRicevere().carta.name, scambio.getDaCedere().carta.name);
+					scambio.getDaRicevere().carta.name, scambio.getDaCedere().carta.name, scambio.getDaRicevere().stato);
 			
 			if (success) {
 				mieiScambi.remove(indexOf);
@@ -332,7 +332,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	}
 	
 	//Scambia i proprietari delle carte
-	private boolean scambiaProprietari(String mittente, String destinatario, String daCedere, String daRicevere) {
+	private boolean scambiaProprietari(String mittente, String destinatario, String daCedere, String daRicevere, int stato) {
 		DB db = DBMaker.fileDB("possedute.db").make();
 		Boolean success = false;
 		
@@ -347,7 +347,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		
 		if (posseduteDestinatario != null) {
 			for (Miacarta carta : posseduteDestinatario) {
-				if (carta.carta.name.equals(daCedere)) {
+				if (carta.carta.name.equals(daCedere) && carta.stato >= stato) {
 					// Create a copy of 'posseduteDestinatario' without the item to remove
 			        List<Miacarta> newPosseduteDestinatario = new ArrayList<Miacarta>(posseduteDestinatario);
 			        newPosseduteDestinatario.remove(carta);
