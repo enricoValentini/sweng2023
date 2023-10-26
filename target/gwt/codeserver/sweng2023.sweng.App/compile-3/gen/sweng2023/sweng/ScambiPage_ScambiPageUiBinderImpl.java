@@ -1,4 +1,4 @@
-// .ui.xml template last modified: 1698185218177
+// .ui.xml template last modified: 1698269404319
 package sweng2023.sweng;
 
 import com.google.gwt.core.client.GWT;
@@ -23,8 +23,8 @@ public class ScambiPage_ScambiPageUiBinderImpl implements UiBinder<com.google.gw
     @Template("Proponi scambio")
     SafeHtml html2();
      
-    @Template("<h1>Scambi di carte</h1> <span id='{0}'></span> <span id='{1}'></span> <span id='{2}'></span>")
-    SafeHtml html3(String arg0, String arg1, String arg2);
+    @Template("<h1>Scambi di carte</h1> <span id='{0}'></span> <span id='{1}'></span> <span id='{2}'></span> <span id='{3}'></span>")
+    SafeHtml html3(String arg0, String arg1, String arg2, String arg3);
      
   }
 
@@ -62,9 +62,11 @@ public class ScambiPage_ScambiPageUiBinderImpl implements UiBinder<com.google.gw
       build_domId0();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
       build_domId1();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
       build_domId2();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
+      build_domId3();  // more than one getter call detected. Type: DOM_ID_HOLDER, precedence: 2
       build_domId0Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
       build_domId1Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
       build_domId2Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
+      build_domId3Element();  // more than one getter call detected. Type: DEFAULT, precedence: 2
     }
 
     SafeHtml template_html1() {
@@ -74,7 +76,7 @@ public class ScambiPage_ScambiPageUiBinderImpl implements UiBinder<com.google.gw
       return template.html2();
     }
     SafeHtml template_html3() {
-      return template.html3(get_domId0(), get_domId1(), get_domId2());
+      return template.html3(get_domId0(), get_domId1(), get_domId2(), get_domId3());
     }
 
     /**
@@ -124,6 +126,7 @@ public class ScambiPage_ScambiPageUiBinderImpl implements UiBinder<com.google.gw
         get_domId0Element().get();
         get_domId1Element().get();
         get_domId2Element().get();
+        get_domId3Element().get();
 
         // Detach section.
         __attachRecord__.detach();
@@ -131,6 +134,7 @@ public class ScambiPage_ScambiPageUiBinderImpl implements UiBinder<com.google.gw
       f_HTMLPanel1.addAndReplaceElement(get_profileBtn(), get_domId0Element().get());
       f_HTMLPanel1.addAndReplaceElement(get_proponiBtn(), get_domId1Element().get());
       f_HTMLPanel1.addAndReplaceElement(get_scambiTable(), get_domId2Element().get());
+      f_HTMLPanel1.addAndReplaceElement(get_errorLabel(), get_domId3Element().get());
 
       return f_HTMLPanel1;
     }
@@ -275,6 +279,52 @@ public class ScambiPage_ScambiPageUiBinderImpl implements UiBinder<com.google.gw
       // Setup section.
 
       return domId2Element;
+    }
+
+    /**
+     * Getter for domId3 called 2 times. Type: DOM_ID_HOLDER. Build precedence: 2.
+     */
+    private java.lang.String domId3;
+    private java.lang.String get_domId3() {
+      return domId3;
+    }
+    private java.lang.String build_domId3() {
+      // Creation section.
+      domId3 = com.google.gwt.dom.client.Document.get().createUniqueId();
+      // Setup section.
+
+      return domId3;
+    }
+
+    /**
+     * Getter for errorLabel called 1 times. Type: DEFAULT. Build precedence: 2.
+     */
+    private com.google.gwt.user.client.ui.Label get_errorLabel() {
+      return build_errorLabel();
+    }
+    private com.google.gwt.user.client.ui.Label build_errorLabel() {
+      // Creation section.
+      final com.google.gwt.user.client.ui.Label errorLabel = (com.google.gwt.user.client.ui.Label) GWT.create(com.google.gwt.user.client.ui.Label.class);
+      // Setup section.
+
+      this.owner.errorLabel = errorLabel;
+
+      return errorLabel;
+    }
+
+    /**
+     * Getter for domId3Element called 2 times. Type: DEFAULT. Build precedence: 2.
+     */
+    private com.google.gwt.uibinder.client.LazyDomElement domId3Element;
+    private com.google.gwt.uibinder.client.LazyDomElement get_domId3Element() {
+      return domId3Element;
+    }
+    private com.google.gwt.uibinder.client.LazyDomElement build_domId3Element() {
+      // Creation section.
+      domId3Element = new com.google.gwt.uibinder.client.LazyDomElement<Element>(get_domId3());
+      // Setup section.
+
+      return domId3Element;
     }
   }
 }

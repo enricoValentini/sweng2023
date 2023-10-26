@@ -217,23 +217,27 @@ public class ProponiScambioPage extends Composite {
 	//Invia una proposta di scambio all'utente designato
 	void proponiScambio(ClickEvent e) {
 		
-		Scambio scambio = new Scambio(daCedere, daRicevere, this.utente.getEmail());
-		greetingService.proponiScambio(scambio, this.utenteBox.getSelectedValue(), new AsyncCallback<Boolean>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onSuccess(Boolean result) {
-				// TODO Auto-generated method stub
-				errorLabel.setText("Richiesta di scambio effettuata con successo");
-			}
-
-				
-            });
+		if (daCedere != null && daRicevere != null) {
+			Scambio scambio = new Scambio(daCedere, daRicevere, this.utente.getEmail());
+			greetingService.proponiScambio(scambio, this.utenteBox.getSelectedValue(), new AsyncCallback<Boolean>() {
+	
+				@Override
+				public void onFailure(Throwable caught) {
+					// TODO Auto-generated method stub
+					
+				}
+	
+				@Override
+				public void onSuccess(Boolean result) {
+					// TODO Auto-generated method stub
+					errorLabel.setText("Richiesta di scambio effettuata con successo");
+				}
+	
+					
+	            });
+		}else {
+			errorLabel.setText("Devi selezionare le 2 carte");
+		}
 	}
 
 }

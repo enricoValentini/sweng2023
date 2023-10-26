@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.impl.RpcStatsContext;
 
 public class GreetingService_Proxy extends RemoteServiceProxy implements sweng2023.sweng.GreetingServiceAsync {
   private static final String REMOTE_SERVICE_INTERFACE_NAME = "sweng2023.sweng.GreetingService";
-  private static final String SERIALIZATION_POLICY ="AAB60B5BB6A3BCE9D6FEFAD65A9BAC9B";
+  private static final String SERIALIZATION_POLICY ="FA22FB456F146D41ED60574CF51D458F";
   private static final sweng2023.sweng.GreetingService_TypeSerializer SERIALIZER = new sweng2023.sweng.GreetingService_TypeSerializer();
   
   public GreetingService_Proxy() {
@@ -21,6 +21,20 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements sweng20
       "greet", 
       SERIALIZATION_POLICY, 
       SERIALIZER);
+  }
+  
+  public void addDeck(java.lang.String email, sweng2023.sweng.Deck deck, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "addDeck");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 2);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("sweng2023.sweng.Deck/4162162470");
+      streamWriter.writeString(email);
+      streamWriter.writeObject(deck);
+      helper.finish(callback, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
   }
   
   public void addPossedutaDesiderata(java.lang.String email, sweng2023.sweng.Miacarta carta, int tipo, com.google.gwt.user.client.rpc.AsyncCallback callback) {
@@ -33,6 +47,20 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements sweng20
       streamWriter.writeString(email);
       streamWriter.writeObject(carta);
       streamWriter.writeInt(tipo);
+      helper.finish(callback, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void deleteDeck(java.lang.String email, int indexOf, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "deleteDeck");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 2);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("I");
+      streamWriter.writeString(email);
+      streamWriter.writeInt(indexOf);
       helper.finish(callback, ResponseReader.OBJECT);
     } catch (SerializationException ex) {
       callback.onFailure(ex);
@@ -63,6 +91,18 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements sweng20
       streamWriter.writeString("java.lang.String/2004016611");
       streamWriter.writeString(filename);
       streamWriter.writeString(mapName);
+      helper.finish(callback, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void getDecks(java.lang.String email, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "getDecks");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 1);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString(email);
       helper.finish(callback, ResponseReader.OBJECT);
     } catch (SerializationException ex) {
       callback.onFailure(ex);
@@ -156,6 +196,22 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements sweng20
       streamWriter.writeString(username);
       streamWriter.writeString(password);
       helper.finish(callback, ResponseReader.STRING);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void scambiaCarte(java.lang.String email, java.lang.Boolean accepted, int indexOf, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "scambiaCarte");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 3);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("java.lang.Boolean/476441737");
+      streamWriter.writeString("I");
+      streamWriter.writeString(email);
+      streamWriter.writeObject(accepted);
+      streamWriter.writeInt(indexOf);
+      helper.finish(callback, ResponseReader.OBJECT);
     } catch (SerializationException ex) {
       callback.onFailure(ex);
     }
