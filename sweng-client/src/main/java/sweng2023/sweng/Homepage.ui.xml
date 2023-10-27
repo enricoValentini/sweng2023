@@ -8,7 +8,10 @@
 		<div style="display: block">
 			<g:Button ui:field="loginBtn">Login</g:Button>
 			<g:Button ui:field="logoutBtn">Logout</g:Button>
-			<g:Button ui:field="profileBtn">Profilo</g:Button>
+			<g:Button ui:field="posseduteBtn">Carte possedute</g:Button>
+			<g:Button ui:field="desiderateBtn">Carte desiderate</g:Button>
+			<g:Button ui:field="scambiBtn">Scambia carte</g:Button>
+			<g:Button ui:field="deckBtn">I miei deck</g:Button>
 		</div>
 
 		<br/>

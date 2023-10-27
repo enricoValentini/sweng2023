@@ -8,6 +8,6 @@
 		<h1 ui:field="myHeader">Le mie carte</h1>
 		<g:Label ui:field="errorLabel"></g:Label>
 		<g:FlexTable ui:field="cardTable"></g:FlexTable>
-		<g:Button ui:field="profileBtn">Torna al menu di navigazione</g:Button>
+		<g:Button ui:field="profileBtn">Torna alla home</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -6,7 +6,7 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<h1>I miei deck</h1>
-		<g:Button ui:field="profileBtn">Torna al menu di navigazione</g:Button>
+		<g:Button ui:field="profileBtn">Torna alla home</g:Button>
 		<g:Button ui:field="createBtn">Aggiungi deck</g:Button>
 		<g:FlexTable ui:field="deckTable"></g:FlexTable>
 		<g:Label ui:field="errorLabel"></g:Label>

@@ -142,11 +142,11 @@ public class DeckPage extends Composite {
 	}
 	
 	@UiHandler("profileBtn")
-	//Torna alla pagina del profilo
+	//Torna alla home
 	void backHome(ClickEvent e) {
 		RootPanel.get().clear();
-		Composite profilo = new ProfiloPage(this.utente);
-		RootPanel.get().add(profilo);
+		Composite homepage = new Homepage(this.utente);
+		RootPanel.get().add(homepage);
 	}
 	
 	@UiHandler("createBtn")

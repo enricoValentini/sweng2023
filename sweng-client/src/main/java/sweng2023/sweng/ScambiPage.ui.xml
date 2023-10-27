@@ -6,7 +6,7 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<h1>Scambi di carte</h1>
-		<g:Button ui:field="profileBtn">Torna al profilo</g:Button>
+		<g:Button ui:field="profileBtn">Torna alla home</g:Button>
 		<g:Button ui:field="proponiBtn">Proponi scambio</g:Button>
 		<g:FlexTable ui:field="scambiTable"></g:FlexTable>
 		<g:Label ui:field="errorLabel"></g:Label>

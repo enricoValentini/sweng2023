@@ -145,10 +145,11 @@ public class PosseduteDesideratePage extends Composite {
 	}
 	
 	@UiHandler("profileBtn")
+	//Torna alla home
 	void backToProfile(ClickEvent e) {
 		RootPanel.get().clear();
-		Composite profilo = new ProfiloPage(this.utente);
-		RootPanel.get().add(profilo);
+		Composite homepage = new Homepage(this.utente);
+		RootPanel.get().add(homepage);
 	}
 
 

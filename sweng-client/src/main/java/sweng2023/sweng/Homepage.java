@@ -27,13 +27,19 @@ public class Homepage extends Composite {
 	@UiField
 	Button logoutBtn;
 	@UiField
-	Button profileBtn;
-	@UiField
 	Button yugiohBtn;
 	@UiField
 	Button magicBtn;
 	@UiField
 	Button PokemonBtn;
+	@UiField
+	Button posseduteBtn;
+	@UiField
+	Button desiderateBtn;
+	@UiField
+	Button deckBtn;
+	@UiField
+	Button scambiBtn;
 	
 	Utente user;
 	
@@ -43,7 +49,10 @@ public class Homepage extends Composite {
 			this.loginBtn.setVisible(false);
 		}else {
 			this.logoutBtn.setVisible(false);
-			this.profileBtn.setVisible(false);
+			this.posseduteBtn.setVisible(false);
+			this.desiderateBtn.setVisible(false);
+			this.deckBtn.setVisible(false);
+			this.scambiBtn.setVisible(false);
 		}
 
 	}
@@ -87,15 +96,38 @@ public class Homepage extends Composite {
 		Composite magic = new MagicPage(this.user);
 		RootPanel.get().add(magic);
 	}
-
-	//Visualizza il profilo personale dell'utente loggato
-	@UiHandler("profileBtn")
-	void openProfile(ClickEvent e) {
+	
+	@UiHandler("posseduteBtn")
+	//Visualizza la lista di carte possedute
+	void goToPossedute(ClickEvent e) {
 		RootPanel.get().clear();
-		Composite profilo = new ProfiloPage(this.user);
-		RootPanel.get().add(profilo);
+		Composite posseduteDesiderate = new PosseduteDesideratePage(this.user, 0);
+		RootPanel.get().add(posseduteDesiderate);
 	}
-
+	
+	@UiHandler("desiderateBtn")
+	//Visualizza la lista di carte desiderate
+	void goToDesiderate(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite posseduteDesiderate = new PosseduteDesideratePage(this.user, 1);
+		RootPanel.get().add(posseduteDesiderate);
+	}
+	
+	@UiHandler("scambiBtn")
+	//Visualizza pagina degli scambi
+	void goToScambi(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite scambi = new ScambiPage(this.user);
+		RootPanel.get().add(scambi);
+	}
+	
+	@UiHandler("deckBtn")
+	//Visualizza la lista dei deck dell'user
+	void goToDeck(ClickEvent e) {
+		RootPanel.get().clear();
+		Composite deck = new DeckPage(this.user);
+		RootPanel.get().add(deck);
+	}
 
 
 	public Homepage(Utente u) {

@@ -1,13 +1,13 @@
 binding: user.agent=safari
 Compiling module sweng2023.sweng.App
-   Unification traversed 867 fields and methods and 403 types. 11 are considered part of the current module and 19 had all of their fields and methods traversed.
-   Compiling 1 permutation
-      Compiling permutation 0...
-      Linking per-type JS with 11 new/changed types.
-      Source Maps Enabled
-   Compile of permutations succeeded
-   Compilation succeeded -- 5,564s
-Linking into C:\Users\Admin\Desktop\SWENG23\sweng2023\target\gwt\codeserver\sweng2023.sweng.App\compile-3\war\app; Writing extras to C:\Users\Admin\Desktop\SWENG23\sweng2023\target\gwt\codeserver\sweng2023.sweng.App\compile-3\extras\app
-   Link succeeded
-   Linking succeeded -- 0,418s
-6,218s total -- Compile completed
+   Computing all possible rebind results for 'sweng2023.sweng.Homepage.HomepageUiBinder'
+      Rebinding sweng2023.sweng.Homepage.HomepageUiBinder
+         Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+            [ERROR] Template sweng2023/sweng/Homepage.ui.xml has no ui:field attribute for sweng2023.sweng.Homepage#profileBtn
+   [ERROR] Errors in 'sweng2023/sweng/Homepage.java'
+      [ERROR] Line 15: Failed to resolve 'sweng2023.sweng.Homepage.HomepageUiBinder' via deferred binding
+   [WARN] For the following type(s), generated source was never committed (did you forget to call commit()?)
+      [WARN] sweng2023.sweng.Homepage_HomepageUiBinderImpl
+   Unification traversed 910 fields and methods and 519 types. 9 are considered part of the current module and 17 had all of their fields and methods traversed.
+   [WARN] Some stale types ([sweng2023.sweng.Homepage_HomepageUiBinderImpl, sweng2023.sweng.Homepage_HomepageUiBinderImpl$Widgets]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
+[ERROR] Compiler returned false

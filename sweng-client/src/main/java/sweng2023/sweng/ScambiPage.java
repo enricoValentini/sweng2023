@@ -130,11 +130,11 @@ public class ScambiPage extends Composite {
 	}
 	
 	@UiHandler("profileBtn")
-	//Torna al profilo
-	void backToProfile(ClickEvent e) {
+	//Torna alla home
+	void backToHome(ClickEvent e) {
 		RootPanel.get().clear();
-		Composite profilo = new ProfiloPage(this.utente);
-		RootPanel.get().add(profilo);
+		Composite homepage = new Homepage(this.utente);
+		RootPanel.get().add(homepage);
 	}
 	
 	@UiHandler("proponiBtn")
