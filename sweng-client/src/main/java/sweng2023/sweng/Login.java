@@ -42,7 +42,6 @@ public class Login extends Composite {
 
 	String text;
 	public Login() {
-		this.text = "tests";
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	

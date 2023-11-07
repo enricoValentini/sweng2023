@@ -344,6 +344,58 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		List<Miacarta> posseduteDestinatario = carte.get(destinatario);
 		List<Miacarta> posseduteMittente = carte.get(mittente);
 		Miacarta cartaCeduta = null;
+
+		if (posseduteDestinatario != null) {
+			for (Miacarta carta : posseduteDestinatario) {
+				if (carta.carta.name.equals(daCedere) && carta.stato >= stato) {
+					// Create a copy of 'posseduteDestinatario' without the item to remove
+			        List<Miacarta> newPosseduteDestinatario = new ArrayList<Miacarta>(posseduteDestinatario);
+			        newPosseduteDestinatario.remove(carta);
+					List<Miacarta> newPosseduteMittente = new ArrayList<Miacarta>(posseduteMittente);
+
+
+					// Update the 'carte' map for the 'mittente' key
+			        newPosseduteMittente.add(carta);
+
+					if (posseduteMittente != null) {
+						for (Miacarta c : posseduteMittente) {
+							if (c.carta.name.equals(daRicevere) && c.stato >= stato) {
+								newPosseduteMittente.remove(c);
+								newPosseduteDestinatario.add(c);
+								success = true;
+							}
+						}
+					}
+					else{
+						success = false;
+					}
+			        // Update the 'carte' map with the modified lists
+					carte.put(mittente, newPosseduteMittente);
+			        carte.put(destinatario, newPosseduteDestinatario);
+
+			        success = true;
+			        break;
+				}
+			}
+		}
+		
+		db.close();
+		
+		return success;
+		
+	}
+	/*private boolean scambiaProprietari(String mittente, String destinatario, String daCedere, String daRicevere, int stato) {
+		DB db = DBMaker.fileDB("possedute.db").make();
+		Boolean success = false;
+		
+		HTreeMap<String, List<Miacarta>> carte = db.hashMap("possedute")
+				.keySerializer(Serializer.STRING)
+				.valueSerializer(Serializer.JAVA)
+				.createOrOpen();
+		
+		List<Miacarta> posseduteDestinatario = carte.get(destinatario);
+		List<Miacarta> posseduteMittente = carte.get(mittente);
+		Miacarta cartaCeduta = null;
 		
 		if (posseduteDestinatario != null) {
 			for (Miacarta carta : posseduteDestinatario) {
@@ -370,7 +422,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		return success;
 		
 	}
-
+*/
 	@Override
 	//restituisce la lista di deck
 	public ArrayList<Deck> getDecks(String email) {
